@@ -25,7 +25,7 @@ My dotfiles for i3, zsh, polybar, dunst...
 - Theme: `Nord`
 - Web Browser: `Google Chrome/Mozilla Firefox`
 - Window Manager: `i3`
-- Linux Distribution: `Debian Linux`
+- Linux Distribution: `Debian Linux Buster (testing)`
 
 ## Install
 
