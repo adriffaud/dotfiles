@@ -24,3 +24,7 @@ My dotfiles for i3, zsh, polybar, dunst...
 - Web Browser: `Google Chrome/Mozilla Firefox`
 - Window Manager: `i3`
 - Linux Distribution: `Debian Linux`
+
+## Install
+
+`git clone https://github.com/adriffaud/dotfiles && cd dotfiles && ./install`
