@@ -1,0 +1,168 @@
+# Variables
+set $wallpaper ~/Pictures/Wallpapers/wallhaven-556625.png
+set $mod Mod4
+
+##############
+# APPEARANCE #
+##############
+# Font
+font pango:Hack 10
+
+# Colors
+set_from_resource		$active				active
+set_from_resource		$inactive			inactive
+set_from_resource		$background		background
+set_from_resource		$foreground		foreground
+set_from_resource		$urgent				urgent
+
+# class									border				background	text					indicator
+client.focused					$background		#222D32			$foreground		#FFCC66
+client.focused_inactive	$background		#222D32			$foreground		#484E50
+#client.unfocused				$background		#182125			$inactive			#292D2E
+#client.urgent						$urgent				$active			$foreground		#900000
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec tilix
+
+bindsym $mod+l exec i3lock
+
+# kill focused window
+bindsym $mod+Shift+A kill
+
+# Use Rofi as application launcher
+bindsym $mod+d exec rofi -show drun -display-run ":"
+
+# Focus window
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+q focus parent
+
+# focus the child container
+bindsym $mod+Shift+q focus child
+
+# Cycle through workspaces with Mod + PageNext/Prev
+bindsym $mod+Next workspace next
+bindsym $mod+Prior workspace prev
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+F1 reload
+bindsym $mod+F2 restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+F4 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym $mod+x move workspace to output right
+
+# pin apps to some workspace
+assign [class="Slack"] 4
+
+# Screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+
+# volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Media keys
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
+# Screenshot
+bindsym Print exec xfce4-screenshooter
+
+# Hide window border if only window
+hide_edge_borders both
+for_window [class="^.*"] border pixel 1
+for_window [class=".*"] title_format "  %title"
+
+# Autostart
+exec        --no-startup-id feh --bg-scale $wallpaper
+exec        --no-startup-id compton
+exec        --no-startup-id nm-applet
+exec        --no-startup-id xsettingsd
+exec        --no-startup-id pasystray
+exec        --no-startup-id numlockx
+exec        --no-startup-id synclient TapButton1=1
+exec        --no-startup-id synclient TapButton2=3
+exec        --no-startup-id synclient VertScrollDelta=-68
+exec        --no-startup-id syndaemon -i 0.5 -t -K -R
+exec_always --no-startup-id "killall polybar;polybar -r default"
+
+exec /usr/lib/slack/slack --disable-gpu

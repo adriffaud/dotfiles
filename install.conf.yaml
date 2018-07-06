@@ -1,0 +1,25 @@
+- clean: ['~']
+
+- link:
+    ~/.gitconfig:
+        path: gitconfig
+        create: false
+        relink: false
+        force: false
+    ~/.vimrc:
+        path: vimrc
+        create: false
+        relink: false
+        force: false
+    ~/.Xresources:
+        path: Xresources
+        create: false
+        relink: false
+        force: false
+    ~/.config/i3:
+        path: config/i3/
+        create: true
+        relink: false
+        force: false
+
+
