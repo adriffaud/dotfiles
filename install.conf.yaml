@@ -46,3 +46,8 @@
         create: true
         relink: false
         force: false
+    ~/.config/compton.conf:
+        path: config/compton.conf
+        create: true
+        relink: false
+        force: false
