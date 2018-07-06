@@ -21,5 +21,28 @@
         create: true
         relink: false
         force: false
-
-
+    ~/.config/polybar:
+        path: config/polybar
+        create: true
+        relink: false
+        force: false
+    ~/.config/i3lock-fancier:
+        path: config/i3lock-fancier
+        create: true
+        relink: false
+        force: false
+    ~/.config/dunst:
+        path: config/dunst
+        create: true
+        relink: false
+        force: false
+    ~/.config/tilix:
+        path: config/tilix
+        create: true
+        relink: false
+        force: false
+    ~/.config/rofi:
+        path: config/rofi
+        create: true
+        relink: false
+        force: false

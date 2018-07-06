@@ -1,0 +1,24 @@
+{
+	"name": "Ayu Mirage",
+	"use-theme-colors": false,
+	"foreground-color": "#d9d7ce",
+	"background-color": "#212733",
+	"palette": [
+		"#11141a",
+		"#ff3333",
+		"#bae67e",
+		"#e7c547",
+		"#73d0ff",
+		"#f07178",
+		"#95e6cb",
+		"#ffffff",
+		"#323232",
+		"#ff6565",
+		"#eafe84",
+		"#fff779",
+		"#68d5ff",
+		"#ffa3aa",
+		"#c7fffd",
+		"#ffffff"
+	]
+}

@@ -1,0 +1,43 @@
+# vi: ft=dosini
+
+[global]
+	font = Roboto Regular 10
+
+	markup = yes
+	indicate_hidden = yes
+
+	format = "<b>%s</b>\n%b"
+
+	sort = yes
+	alignment = left
+	bounce_freq = 0
+	show_age_threshold = 60
+	word_wrap = yes
+	ignore_newline = no
+
+	geometry = "240x20-20+40"
+	idle_threshold = 120
+	monitor = 0
+	follow = mouse
+	sticky_history = yes
+	line_height = 4
+
+	shrink = yes
+	stack_duplicates = yes
+	hide_duplicates_count = yes
+
+	separator_height = 2
+	separator_color = frame
+
+	padding = 4
+	horizontal_padding = 4
+
+	frame_width = 2
+	frame_color = "#222D32"
+
+[urgency_low]
+
+[urgency_normal]
+	background = "#2E3440"
+	foreground = "#D8DEE9"
+	timeout = 4

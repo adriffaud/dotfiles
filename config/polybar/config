@@ -1,0 +1,172 @@
+# vi: ft=dosini
+
+; Doc: https://github.com/jaagr/polybar
+; Wiki: https://github.com/jaagr/polybar/wiki
+; FontAwesome cheat sheet for icons: https://fontawesome.com/v4.7.0/cheatsheet/
+
+[colors]
+active = ${xrdb:active}
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+urgent = ${xrdb:color9}
+secondary = ${xrdb:secondary}
+underline = ${xrdb:color4}
+
+[bar/default]
+monitor = eDP-1
+height = 32
+offset-y = 0
+top = true
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 3
+module-margin = 2
+
+font-0 = Roboto Regular:size=10;2
+font-1 = FontAwesome:size=11;3
+font-2 = MaterialIcons:size=11;4
+
+tray-position = right
+tray-detached = false
+tray-padding = 2
+tray-maxsize = 20
+;tray-transparency = true
+
+modules-left = i3 xwindow
+modules-center = date time time-nyc
+modules-right = wireless cpu temperature volume backlight battery
+
+[module/i3]
+type = internal/i3
+
+; Show workspaces of all monitors as I only have one bar for now
+pin-workspaces = false
+
+index-sort = true
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false
+reverse-scroll = true
+fuzzy-match = true
+format = <label-mode><label-state>
+label-mode-padding = 2
+label-focused = %index%  %icon%
+label-focused-padding = 2
+label-unfocused = %index%  %icon%
+label-unfocused-padding = 2
+label-visible = %index%  %icon%
+label-visible-padding = 2
+label-urgent = %index%  %icon%
+label-urgent-padding = 2
+label-focused-foreground = ${colors.active}
+label-focused-background = #29373d
+label-focused-underline = ${colors.underline}
+label-visible-foreground = ${colors.active}
+label-unfocused-foreground = ${colors.secondary}
+label-urgent-foreground = ${colors.urgent}
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:40:...%
+
+[module/temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/virtual/hwmon/hwmon3/temp1_input
+warn-temperature = 80
+format =   <label>
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp>  <label>
+label = %percentage%%
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+[module/battery]
+type = internal/battery
+; This is useful in case the battery never reports 100% charge
+; full-at = 99
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+poll-interval = 5
+
+time-format = %H:%M
+format-charging =   <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full =   <label-full>
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+format-prefix = " "
+label = %percentage%%
+
+[module/date]
+type = internal/date
+date = %A, %B %d
+format =   <label>
+
+[module/time]
+type = internal/date
+date = %H:%M
+format =   TLS <label>
+
+[module/time-nyc]
+type = custom/script
+exec = TZ=America/New_York date +"NYC %H:%M"
+interval = 10
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+format-muted =  
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground = ${colors.active}
+
+[module/wireless]
+type = internal/network
+interface = wlp2s0
+format-connected = <label-connected>
+format-disconnected-underline = ${colors.urgent}
+format-disconnected = <label-disconnected>
+label-connected =   %signal%%
+label-disconnected = 
+
+[settings]
+screenchange-reload = true

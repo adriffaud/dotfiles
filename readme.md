@@ -8,6 +8,8 @@ My dotfiles for i3, zsh, polybar, dunst...
 
 ![busy](./busy.png)
 
+[Wallpaper](https://alpha.wallhaven.cc/wallpaper/556625)
+
 ## Setup
 
 - Application Launcher: `rofi`
