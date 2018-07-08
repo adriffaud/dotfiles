@@ -6,7 +6,15 @@
 
 - clean: ['~']
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - link:
+    ~/.zshenv: zshenv
+    ~/.zprofile: zprofile
+    ~/.zshrc: zshrc
+    ~/.zpreztorc: zpreztorc
+    ~/.zprezto: prezto
     ~/.gitconfig:
         path: gitconfig
         create: false
