@@ -23,6 +23,9 @@ Plugin 'mxw/vim-jsx'
 Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 
+" Clojure
+Plugin 'tpope/vim-fireplace'
+
 " Themes
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'ajh17/Spacegray.vim'
