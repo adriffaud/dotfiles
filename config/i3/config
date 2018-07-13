@@ -1,6 +1,7 @@
 # Variables
 set $wallpaper ~/Pictures/Wallpapers/wallhaven-556625.png
 set $mod Mod4
+set $alt Mod1
 
 ##############
 # APPEARANCE #
@@ -32,6 +33,7 @@ bindsym $mod+l exec i3lock
 
 # kill focused window
 bindsym $mod+Shift+A kill
+bindsym $alt+F4 kill
 
 # Use Rofi as application launcher
 bindsym $mod+d exec rofi -show drun -display-run ":"
