@@ -131,8 +131,8 @@ bindsym $mod+x move workspace to output right
 assign [class="Slack"] 4
 
 # Screen brightness
-bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-; notify-send 'brightness down'"
-bindsym XF86MonBrightnessUp exec "brightnessctl s +5%; notify-send 'brightness up'"
+bindsym XF86MonBrightnessUp exec brightness up
+bindsym XF86MonBrightnessDown exec brightness down
 
 # volume
 bindsym XF86AudioRaiseVolume exec volume up
