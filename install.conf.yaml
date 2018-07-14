@@ -24,6 +24,7 @@
     ~/.Xresources:
         path: Xresources
         create: false
+    ~/bin/volume: bin/volume
     ~/.config/i3: config/i3/
     ~/.config/polybar: config/polybar
     ~/.config/i3lock-fancier: config/i3lock-fancier

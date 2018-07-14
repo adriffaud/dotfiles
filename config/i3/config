@@ -131,14 +131,14 @@ bindsym $mod+x move workspace to output right
 assign [class="Slack"] 4
 
 # Screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "brightnessctl s +5%; notify-send 'brightness up'"
 
 # volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioRaiseVolume exec volume up
+bindsym XF86AudioLowerVolume exec volume down
+bindsym XF86AudioMute exec volume mute
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media keys
 bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
