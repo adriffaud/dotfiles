@@ -4,32 +4,29 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'shougo/deoplete.nvim'
+
+" Go
 Plugin 'fatih/vim-go'
-Plugin 'SirVer/ultisnips'
-Plugin 'shougo/deoplete.nvim'
 
 " Javascript
-" Plugin 'pangloss/vim-javascript'
-Plugin 'othree/yajs.vim'
-Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
+Plugin 'ap/vim-css-color'
 
 " Clojure
 Plugin 'tpope/vim-fireplace'
 
 " Themes
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'ajh17/Spacegray.vim'
-Plugin 'mhartington/oceanic-next'
 Plugin 'arcticicestudio/nord-vim'
 
 " All of your Plugins must be added before the following line
@@ -42,14 +39,7 @@ syntax on
 filetype plugin indent on
 
 set termguicolors
-"let ayucolor="mirage"
 colorscheme nord
-
-" Oceanic config
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"colorscheme OceanicNext
-"let g:airline_theme='oceanicnext'
 
 set term=xterm-256color
 set guioptions-=T  "remove toolbar
@@ -61,6 +51,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set smarttab
+
+set cursorline " Highlight current line
 
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
@@ -104,17 +96,17 @@ nmap <c-e> :NERDTreeToggle<cr>
 
 
 " trying to trigger ultisnippet with enter key
-let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ulti_expand_or_jump_res = 0
-function ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+"let g:UltiSnipsExpandTrigger = "<nop>"
+"let g:ulti_expand_or_jump_res = 0
+"function ExpandSnippetOrCarriageReturn()
+"    let snippet = UltiSnips#ExpandSnippetOrJump()
+"    if g:ulti_expand_or_jump_res > 0
+"        return snippet
+"    else
+"        return "\<CR>"
+"    endif
+"endfunction
+"inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 
 set backupdir=~/.vim-backup
 set backupdir=~/.vim-backup
@@ -124,19 +116,8 @@ set nowritebackup
 
 let g:go_fmt_command = "goimports"
 
-" no limit on the number of file indexed by ctrl+p
-let g:ctrlp_max_files=0
-
-
 " highlight current open file in nerdtree
 map <leader>f :NERDTreeFind<cr>
-
-" eclim java search
-nmap <leader><F3> :JavaSearchContext<cr>
-
-" CtrlP search only by filename and not full path
-let g:ctrlp_by_filename = 1
-map <leader>b :CtrlPBuffer<CR>
 
 " ignore some useless files
 set wildignore+=*/build/*,*.so,*.swp,*.class,*.o,*.jar,*/target/*
@@ -146,6 +127,16 @@ let g:ag_working_path_mode="r"
 
 " toggle tasks
 noremap <silent> <buffer> <Leader>x :call Toggle_task_status()<CR>
+
+" Shortcuts for buffers
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
+" airline config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " visual preview
 "set inccommand=nosplit
@@ -162,3 +153,8 @@ let g:ale_lint_on_text_changed = 0
 " Auto prettier on save
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+" Nord config
+let g:nord_italic = 1
+let g:nord_underline = 1
+
