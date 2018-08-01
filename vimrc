@@ -12,9 +12,15 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'shougo/deoplete.nvim'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'roxma/vim-hug-neovim-rpc'
+
+" Completion
+Plugin 'maralla/completor.vim'
 
 " Go
 Plugin 'fatih/vim-go'
+Plugin 'cespare/vim-toml'
 
 " Javascript
 Plugin 'pangloss/vim-javascript'
@@ -115,6 +121,9 @@ set nobackup
 set nowritebackup
 
 let g:go_fmt_command = "goimports"
+
+" Enable deoplete at startup
+"let g:deoplete#enable_at_startup = 1
 
 " highlight current open file in nerdtree
 map <leader>f :NERDTreeFind<cr>
