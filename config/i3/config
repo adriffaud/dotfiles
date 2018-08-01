@@ -126,9 +126,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+x move workspace to output right
+bindsym $mod+c move workspace to output up
 
 # pin apps to some workspace
+assign [class="Google-chrome"] 1
+assign [class="Firefox"] 3
 assign [class="Slack"] 4
+assign [class="discord"] 4
+assign [class="Caprine"] 4
+assign [class="Spotify"] 5
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec brightness up
