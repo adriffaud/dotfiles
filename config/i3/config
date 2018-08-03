@@ -160,6 +160,9 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class=".*"] title_format "  %title"
 
+# Show GNOME Calculator as a floating window
+for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
+
 # Autostart
 exec        --no-startup-id feh --bg-scale $wallpaper
 exec        --no-startup-id compton
