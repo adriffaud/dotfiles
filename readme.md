@@ -2,7 +2,7 @@
 
 My dotfiles for i3, zsh, polybar, dunst...
 
-## Screenshot
+## Screenshots
 
 ![clean](./clean.png)
 
