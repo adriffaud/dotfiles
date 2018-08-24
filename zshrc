@@ -234,15 +234,19 @@ function __aws_connect {
 IOT_STAGE_BASTION=34.240.194.144
 IOT_IOC_BASTION=54.154.161.116
 
-alias go_iot_stage_bastion='ssh -A ec2-user@$IOT_STAGE_BASTION'
-alias go_iot_stage_consul='ssh -A -J ec2-user@$IOT_STAGE_BASTION ec2-user@consul-a.stage.bk'
+alias go_stage_bastion='ssh -A ec2-user@$IOT_STAGE_BASTION'
+alias go_stage_consul='ssh -A -J ec2-user@$IOT_STAGE_BASTION ec2-user@consul-a.stage.bk'
 
-alias tunnel_iot_stage_nomad='__iot_connect consul-a.stage.bk 4646 $IOT_STAGE_BASTION 4646'
-alias tunnel_iot_stage_consul='__iot_connect consul-a.stage.bk 8500 $IOT_STAGE_BASTION 8500'
-alias tunnel_iot_stage_traefik='__iot_connect traefik-a1.stage.bk 8080 $IOT_STAGE_BASTION 4647'
+alias tunnel_stage_nomad='__iot_connect consul-a.stage.bk 4646 $IOT_STAGE_BASTION 4646'
+alias tunnel_stage_consul='__iot_connect consul-a.stage.bk 8500 $IOT_STAGE_BASTION 8500'
+alias tunnel_stage_traefik='__iot_connect traefik-a1.stage.bk 8080 $IOT_STAGE_BASTION 4647'
 
-alias go_iot_ioc_bastion='ssh -A ec2-user@$IOT_IOC_BASTION'
-alias go_iot_ioc_consul='ssh -A -J ec2-user@$IOT_IOC_BASTION ec2-user@consul-a.ioc.bk'
+alias tunnel_ioc_nomad='__iot_connect nomad-a1.ioc.bk 4646 $IOT_IOC_BASTION 4646'
+alias tunnel_ioc_consul='__iot_connect consul-a.ioc.bk 8500 $IOT_IOC_BASTION 8500'
+alias tunnel_ioc_traefik='__iot_connect traefik-a1.ioc.bk 8080 $IOT_IOC_BASTION 4647'
+
+alias go_ioc_bastion='ssh -A ec2-user@$IOT_IOC_BASTION'
+alias go_ioc_consul='ssh -A -J ec2-user@$IOT_IOC_BASTION ec2-user@consul-a.ioc.bk'
 
 # Usage: __iot_connect <service_host> <service_port> <bastion_ip> <local_port>
 function __iot_connect {
