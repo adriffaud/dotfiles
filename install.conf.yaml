@@ -26,6 +26,7 @@
         create: false
     ~/bin/volume: bin/volume
     ~/bin/brightness: bin/brightness
+    ~/bin/screencast: bin/screencast
     ~/.config/i3: config/i3/
     ~/.config/polybar: config/polybar
     ~/.config/i3lock-fancier: config/i3lock-fancier

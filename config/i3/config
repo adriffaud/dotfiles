@@ -154,6 +154,8 @@ bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 
 # Screenshot
 bindsym Print exec xfce4-screenshooter
+bindsym Ctrl+Print exec ~/bin/screencast
+bindsym Ctrl+Shift+Print exec killall ffmpeg
 
 # Hide window border if only window
 hide_edge_borders both
