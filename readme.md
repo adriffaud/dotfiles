@@ -29,4 +29,4 @@ My dotfiles for i3, zsh, polybar, dunst...
 
 ## Install
 
-`git clone https://github.com/adriffaud/dotfiles && cd dotfiles && ./install`
+`git clone https://github.com/adriffaud/dotfiles .dotfiles && cd .dotfiles && ./install`
