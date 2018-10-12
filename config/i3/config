@@ -1,5 +1,5 @@
 # Variables
-set $wallpaper ~/Pictures/Wallpapers/44085437051_638178ec86_o.png
+set $wallpaper ~/Pictures/Wallpapers/wall.png
 set $mod Mod4
 set $alt Mod1
 
@@ -27,7 +27,7 @@ client.focused_inactive	$background		#222D32			$foreground		#484E50
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec tilix
+bindsym $mod+Return exec gnome-terminal
 
 bindsym $mod+l exec i3lock
 
@@ -109,7 +109,7 @@ bindsym $mod+F1 reload
 bindsym $mod+F2 restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+F4 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+F4 exec "i3-nagbar -t error -m 'Shutdown the computer?' -b 'Yes' 'systemctl poweroff'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -130,7 +130,7 @@ bindsym $mod+c move workspace to output up
 
 # pin apps to some workspace
 assign [class="Google-chrome"] 1
-assign [class="Firefox"] 3
+assign [class="Firefox"] 1
 assign [class="Slack"] 4
 assign [class="discord"] 4
 assign [class="Caprine"] 4
@@ -169,7 +169,7 @@ for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enabl
 exec        --no-startup-id feh --bg-scale $wallpaper
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
-exec        --no-startup-id xsettingsd
+exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
 exec        --no-startup-id synclient TapButton1=1
