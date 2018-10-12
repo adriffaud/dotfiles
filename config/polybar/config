@@ -13,7 +13,7 @@ secondary = ${xrdb:secondary}
 underline = ${xrdb:color4}
 
 [bar/default]
-monitor = eDP-1
+;monitor = DP-1
 height = 32
 offset-y = 0
 top = true
@@ -39,7 +39,8 @@ tray-maxsize = 20
 ;tray-transparency = true
 
 modules-left = i3 xwindow
-modules-center = date time time-nyc
+modules-center = date time 
+;time-nyc
 modules-right = wireless cpu temperature volume backlight battery
 
 [module/i3]
@@ -71,9 +72,9 @@ label-visible-foreground = ${colors.active}
 label-unfocused-foreground = ${colors.secondary}
 label-urgent-foreground = ${colors.urgent}
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
