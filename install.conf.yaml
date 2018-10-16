@@ -29,7 +29,6 @@
     ~/bin/screencast: bin/screencast
     ~/.config/i3: config/i3/
     ~/.config/polybar: config/polybar
-    ~/.config/i3lock-fancier: config/i3lock-fancier
     ~/.config/dunst: config/dunst
     ~/.config/tilix: config/tilix
     ~/.config/rofi: config/rofi
