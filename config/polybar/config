@@ -13,7 +13,7 @@ secondary = ${xrdb:secondary}
 underline = ${xrdb:color4}
 
 [bar/default]
-;monitor = DP-1
+;monitor = eDP-1
 height = 32
 offset-y = 0
 top = true
@@ -33,14 +33,13 @@ font-1 = FontAwesome:size=11;3
 font-2 = MaterialIcons:size=11;4
 
 tray-position = right
-tray-detached = false
-tray-padding = 2
-tray-maxsize = 20
+;tray-detached = false
+;tray-padding = 2
+;tray-maxsize = 20
 ;tray-transparency = true
 
 modules-left = i3 xwindow
-modules-center = date time 
-;time-nyc
+modules-center = date
 modules-right = wireless cpu temperature volume backlight battery
 
 [module/i3]
@@ -137,18 +136,8 @@ label = %percentage%%
 
 [module/date]
 type = internal/date
-date = %A, %B %d
-format =   <label>
-
-[module/time]
-type = internal/date
-date = %H:%M
-format =   TLS <label>
-
-[module/time-nyc]
-type = custom/script
-exec = TZ=America/New_York date +"NYC %H:%M"
-interval = 10
+date = %a., %b. %d - %H:%M %Z
+format = <label>
 
 [module/volume]
 type = internal/pulseaudio
