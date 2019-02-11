@@ -1,8 +1,8 @@
 - defaults:
     link:
-        create: true
-        relink: false
-        force: false
+      create: true
+      relink: false
+      force: false
 
 - clean: ['~']
 
@@ -16,14 +16,17 @@
     ~/.zpreztorc: zpreztorc
     ~/.zprezto: prezto
     ~/.gitconfig:
-        path: gitconfig
-        create: false
+      path: gitconfig
+      create: false
     ~/.vimrc:
-        path: vimrc
-        create: false
+      path: vimrc
+      create: false
     ~/.Xresources:
-        path: Xresources
-        create: false
+      path: Xresources
+      create: false
+    ~/.spacemacs:
+      path: spacemacs
+      create: false
     ~/bin/volume: bin/volume
     ~/bin/brightness: bin/brightness
     ~/bin/screencast: bin/screencast
