@@ -16,10 +16,22 @@
     df = diff
     count = "!f() { compareBranch=${1-master}; git rev-list --count HEAD ^$compareBranch; }; f"
 [color]
-    ui = true
+	ui = true
 [branch]
     autosetuprebase = always
 [remote "origin"]
     prune = true
 [push]
     default = simple
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
