@@ -136,7 +136,7 @@ label = %percentage%%
 
 [module/date]
 type = internal/date
-date = %a., %b. %d - %H:%M %Z
+date = %a., %b. %d - %H:%M
 format = <label>
 
 [module/volume]
@@ -158,7 +158,7 @@ interface = wlp2s0
 format-connected = <label-connected>
 format-disconnected-underline = ${colors.urgent}
 format-disconnected = <label-disconnected>
-label-connected =   %signal%%
+label-connected =  %essid% (%signal%%)
 label-disconnected = 
 
 [settings]

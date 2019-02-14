@@ -29,7 +29,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
-bindsym $mod+l exec i3lock -c 000000 -i ~/Pictures/Wallpapers/wall.png
+bindsym $mod+l exec i3lock -c 000000 -i ~/Pictures/Wallpapers/wall.png -t
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -109,6 +109,7 @@ bindsym $mod+F1 reload
 bindsym $mod+F2 restart
 
 # exit i3 (logs you out of your X session)
+bindsym $mod+F4 exec "i3-nagbar -t warning -m 'Exit i3? This will end your X session.' -b 'Yes' 'i3-msg exit'"
 bindsym $mod+Shift+F4 exec "i3-nagbar -t error -m 'Shutdown the computer?' -b 'Yes' 'systemctl poweroff'"
 
 # resize window (you can also use the mouse for that)
@@ -169,7 +170,7 @@ for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enabl
 exec        --no-startup-id feh --bg-scale $wallpaper
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
-exec        --no-startup-id blueman-applet
+#exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
 exec        --no-startup-id synclient TapButton1=1
