@@ -25,9 +25,6 @@ export TERM="screen-256color"
 export EDITOR="vim"
 export VISUAL="vim"
 
-export DRONE_SERVER="https://ci.flowthings.io"
-export DRONE_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0IjoiYWRyaWZmYXVkIiwidHlwZSI6InVzZXIifQ.wzblQQq_WeGY5LCjGkPFLQp67hFoYNzpJBhwIwVhcnY"
-
 export GOPATH=$HOME/Dev/Go
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
 
@@ -38,34 +35,6 @@ function print_colors() {
         printf "\n";
     fi
   done
-}
-
-alias aws_get_profil='aws configure list'
-alias aws_set_profil_default='export AWS_DEFAULT_PROFILE=default'
-alias aws_set_profil_na='export AWS_DEFAULT_PROFILE=na'
-alias aws_set_profil_eu='export AWS_DEFAULT_PROFILE=eu'
-
-alias aws_list_preprod_cfg='__aws_list s3://av-preprod-secrets/files/config/'
-alias aws_list_prod_cfg='__aws_list s3://av-prod-secrets/files/config/'
-alias aws_view_preprod_cfg='__aws_view s3://av-preprod-secrets/files/config/'
-alias aws_view_prod_cfg='__aws_view s3://av-prod-secrets/files/config/'
-
-# ---------
-# Functions
-# ---------
-
-# Usage: __aws_list <s3_path>
-function __aws_list {
-  local s3_cmd="aws s3 ls $1"
-  echo ${s3_cmd}
-  eval "${s3_cmd}"
-}
-
-# Usage: __aws_view <s3_path> <s3_file>
-function __aws_view {
-  local s3_cmd="aws s3 cp $1$2 -"
-  echo ${s3_cmd}
-  eval "${s3_cmd}"
 }
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
