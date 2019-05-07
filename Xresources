@@ -5,8 +5,8 @@
 URxvt*scrollBar:	    false
 URxvt*letterSpace:  	-1
 URxvt.internalBorder: 10
-URxvt*font: 		      xft:Hack:regular:size=13
-URxvt*boldFont:		    xft:Hack:bold:size=13
+URxvt*font: 		      xft:Hack:regular:size=10
+URxvt*boldFont:		    xft:Hack:bold:size=10
 URxvt*cursorBlink:    true
 URxvt.iso14755:		    false
 URxvt*utf8:			      true
@@ -24,7 +24,7 @@ Xft.hintstyle:		  hintsfull
 ! Xft.lcdfilter:	  lcddefault
 
 ! ============
-!   Couleurs
+!   Colors
 ! ============
 *secondary:  #4C566A
 *active:     #D8DEE9
