@@ -7,7 +7,7 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:Terminus 9
+font pango:Terminus 10
 
 # Colors
 set_from_resource		$active				active
