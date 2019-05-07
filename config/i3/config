@@ -1,5 +1,5 @@
 # Variables
-set $wallpaper ~/Pictures/Wallpapers/wall.png
+set $wallpaper ~/Pictures/Wallpapers/wallhaven-145984.jpg
 set $mod Mod4
 set $alt Mod1
 
@@ -7,7 +7,7 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:Hack 10
+font pango:Terminus 9
 
 # Colors
 set_from_resource		$active				active
@@ -27,9 +27,11 @@ client.focused_inactive	$background		#222D32			$foreground		#484E50
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+# bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec tilix
 
-bindsym $mod+l exec i3lock -c 000000 -i ~/Pictures/Wallpapers/wall.png -t
+# bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
+bindsym $mod+l exec lock
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -170,7 +172,7 @@ for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enabl
 exec        --no-startup-id feh --bg-scale $wallpaper
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
-#exec        --no-startup-id blueman-applet
+exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
 exec        --no-startup-id synclient TapButton1=1

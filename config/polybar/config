@@ -13,8 +13,8 @@ secondary = ${xrdb:secondary}
 underline = ${xrdb:color4}
 
 [bar/default]
-;monitor = eDP-1
-height = 32
+monitor = DP1-2
+height = 28
 offset-y = 0
 top = true
 fixed-center = true
@@ -24,13 +24,13 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-padding-left = 0
-padding-right = 3
-module-margin = 2
+padding-left = 1
+padding-right = 1
+module-margin = 1
 
-font-0 = Roboto Regular:size=10;2
-font-1 = FontAwesome:size=11;3
-font-2 = MaterialIcons:size=11;4
+font-0 = Terminus:size=10;2
+font-1 = FontAwesome:size=10;3
+font-2 = MaterialIcons:size=10;4
 
 tray-position = right
 ;tray-detached = false
@@ -90,7 +90,7 @@ label = %title:0:40:...%
 type = internal/temperature
 hwmon-path = /sys/devices/virtual/hwmon/hwmon3/temp1_input
 warn-temperature = 80
-format =   <label>
+format =  <label>
 
 [module/backlight]
 type = internal/backlight
@@ -114,9 +114,9 @@ adapter = AC
 poll-interval = 5
 
 time-format = %H:%M
-format-charging =   <label-charging>
+format-charging =  <label-charging>
 format-discharging = <ramp-capacity>  <label-discharging>
-format-full =   <label-full>
+format-full =  <label-full>
 label-charging = %percentage%%
 label-discharging = %percentage%%
 label-full = %percentage%%
@@ -136,7 +136,7 @@ label = %percentage%%
 
 [module/date]
 type = internal/date
-date = %a., %b. %d - %H:%M
+date = %A, %B %d - %H:%M
 format = <label>
 
 [module/volume]
