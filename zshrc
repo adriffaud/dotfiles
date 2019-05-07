@@ -7,10 +7,6 @@ fi
 # Needed for some tools like SDKMAN
 setopt clobber
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 alias gst="git status"
 
 # Pretty print AWS policies
@@ -41,6 +37,6 @@ function print_colors() {
 export SDKMAN_DIR="/home/adriffaud/.sdkman"
 [[ -s "/home/adriffaud/.sdkman/bin/sdkman-init.sh" ]] && source "/home/adriffaud/.sdkman/bin/sdkman-init.sh"
 
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /home/adriffaud/.nvm/versions/node/v8.9.4/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/adriffaud/.nvm/versions/node/v8.9.4/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+# fnm
+export PATH=$HOME/.fnm:$PATH
+eval "`fnm env --multi`"
