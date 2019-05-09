@@ -7,7 +7,7 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:Terminus 10
+font pango:Ubuntu 11
 
 # Colors
 set_from_resource		$active				active
@@ -181,6 +181,6 @@ exec        --no-startup-id synclient VertScrollDelta=-68
 exec        --no-startup-id synclient HorizTwoFingerScroll=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
-exec_always --no-startup-id "killall polybar;polybar -r default"
+exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
 exec /usr/lib/slack/slack --disable-gpu
