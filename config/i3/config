@@ -7,21 +7,20 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:Ubuntu 11
+font pango:NotoSans Nerd Font 10
 
 # Colors
-set_from_resource		$active				active
-set_from_resource		$inactive			inactive
-set_from_resource		$background		background
-set_from_resource		$foreground		foreground
-set_from_resource		$urgent				urgent
+set_from_resource	$active		active
+set_from_resource	$inactive	inactive
+set_from_resource	$background	background
+set_from_resource	$foreground	foreground
+set_from_resource	$urgent		urgent
 
-# class									border				background	text					indicator
-client.focused					$background		#222D32			$foreground		#FFCC66
-client.focused_inactive	$background		#222D32			$foreground		#484E50
-#client.unfocused				$background		#182125			$inactive			#292D2E
-#client.urgent						$urgent				$active			$foreground		#900000
-
+# class                         border          background      text            indicator
+client.focused                  $background     #222D32         $foreground     #FFCC66
+client.focused_inactive         $background     #222D32         $foreground     #484E50
+#client.unfocused               $background     #182125         $inactive       #292D2E
+#client.urgent                  $urgent         $active         $foreground     #900000
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

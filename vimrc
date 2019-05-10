@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'shougo/deoplete.nvim'
@@ -30,10 +31,11 @@ Plugin 'prettier/vim-prettier'
 Plugin 'ap/vim-css-color'
 
 " Clojure
-Plugin 'tpope/vim-fireplace'
+"Plugin 'tpope/vim-fireplace'
 
 " Themes
-Plugin 'arcticicestudio/nord-vim'
+"Plugin 'arcticicestudio/nord-vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,7 +47,8 @@ syntax on
 filetype plugin indent on
 
 set termguicolors
-colorscheme nord
+set background=dark
+colorscheme hybrid_reverse
 
 set term=xterm-256color
 set guioptions-=T  "remove toolbar
@@ -146,6 +149,7 @@ nnoremap <silent> ]B :blast<CR>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme = "hybrid"
 
 " visual preview
 "set inccommand=nosplit
@@ -164,6 +168,10 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " Nord config
-let g:nord_italic = 1
-let g:nord_underline = 1
+" let g:nord_italic = 1
+" let g:nord_underline = 1
 
+" Material theme config
+let g:enable_bold_font = 1
+let g:enable_italic_font = 1
+let g:hybrid_transparent_background = 1
