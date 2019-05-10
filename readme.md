@@ -8,7 +8,7 @@ My dotfiles for i3, zsh, polybar, dunst...
 
 ![busy](./busy.png)
 
-[Wallpaper](https://whvn.cc/556625)
+[Wallpaper](https://whvn.cc/145984)
 
 ## Setup
 
@@ -20,7 +20,7 @@ My dotfiles for i3, zsh, polybar, dunst...
 - Text Editor: `vscode/spacemacs/vim`
 - Theme: `Material`
 - Web Browser: `Mozilla Firefox`
-- Window Manager: `GNOME 3`
+- Window Manager: `i3wm`
 - Linux Distribution: `Debian Linux Buster (testing)`
 
 ## Install
