@@ -25,20 +25,20 @@ pseudo-transparency = false
 
 [colors]
 ; Active Shade
-shade1 = #BF360C
-shade2 = #D84315
-shade3 = #E64A19
-shade4 = #F4511E
-shade5 = #FF5722
-shade6 = #FF7043
-shade7 = #FF8A65
-shade8 = #FFAB91
+shade1 = #0D47A1
+shade2 = #1565C0
+shade3 = #1976D2
+; Shade 4 is 500 from Material palette
+shade4 = #1E88E5
+shade5 = #2196F3
+shade6 = #42A5F5
+shade7 = #64B5F6
+shade8 = #90CAF9
 
 ;; Active Colors
 bground = #1D1F28
 fground = #f7f7f7
-;borderbg = #f7f7f7
-accent = #F4511E
+accent = #1E88E5
 modulefg = #f7f7f7
 modulefg-alt = #f7f7f7
 
@@ -97,13 +97,13 @@ module-margin-right = 0
 ; font-0 = Ubuntu:size=10;2
 ; font-1 = FontAwesome:size=10;2
 ; font-2 = MaterialIcons:size=10;2
-font-0 = "Ubuntu Nerd Font:size=10;2"
-font-1 = "Ubuntu Nerd Font:size=16;3"
+font-0 = "NotoSans Nerd Font:size=10;2"
+font-1 = "NotoSans Nerd Font:size=16;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = cpu left1 memory left2 temperature left3 title left4
+modules-left = cpu left1 memory left2 temperature left3 fan left4 title left5
 modules-center = i3
 modules-right = right6 pavolume right5 battery right4 backlight right3 network right2 date right1 powermenu
 
@@ -124,7 +124,9 @@ tray-scale = 1.0
 
 enable-ipc = true
 
-#################
+################################################################################
+#                              Separators                                      #
+################################################################################
 
 [module/left1]
 type = custom/text
@@ -146,11 +148,17 @@ content = "%{T3}%{T-}"
 
 [module/left4]
 type = custom/text
-content-background = ${colors.bground}
+content-background = ${colors.shade5}
 content-foreground = ${colors.shade4}
 content = "%{T3}%{T-}"
 
-#################
+[module/left5]
+type = custom/text
+content-background = ${colors.bground}
+content-foreground = ${colors.shade5}
+content = "%{T3}%{T-}"
+
+################################################################################
 
 [module/right1]
 type = custom/text
@@ -194,17 +202,26 @@ content = "%{T3}%{T-}"
 type = internal/xwindow
 
 format = <label>
-format-background = ${colors.shade4}
+format-background = ${colors.shade5}
 format-foreground = ${colors.modulefg}
 format-padding = 1
 
 label = %title%
 label-maxlen = 50
 
-;;label-empty = Arch Linux
-;;label-empty-foreground = #707880
+################################################################################
 
-#################
+[module/fan]
+type = custom/script
+exec = ~/.config/polybar/scripts/fan.sh
+interval = 1
+format = <label>
+format-prefix = "  "
+format-background = ${colors.shade4}
+format-foreground = ${colors.modulefg}
+format-padding = 1
+
+################################################################################
 
 [module/i3]
 ;https://github.com/jaagr/polybar/wiki/Module:-i3
@@ -255,7 +272,7 @@ format = <label-state>
 ;   %output%
 ; Default: %icon%  %name%
 ; focused = Active workspace on focused monitor
-label-focused = %icon% %name%
+label-focused = %name% %icon%
 label-focused-background = ${colors.bground}
 label-focused-foreground = ${colors.accent}
 label-focused-padding = 2
@@ -266,13 +283,13 @@ label-focused-padding = 2
 ;   %index%
 ; Default: %icon%  %name%
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon% %name%
+label-unfocused = %name% %icon%
 label-unfocused-padding = 2
 label-unfocused-background = ${colors.bground}
 label-unfocused-foreground = ${colors.modulefg-alt}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon% %name%
+label-visible = %name% %icon%
 label-visible-background = ${colors.accent}
 label-visible-padding = 2
 
@@ -287,8 +304,7 @@ label-urgent-background = ${colors.bground}
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
 
-format-foreground = #000000
-format-background = #F07178
+################################################################################
 
 [module/backlight]
 type = internal/backlight
