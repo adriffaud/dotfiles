@@ -78,9 +78,9 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = desno3 temperature1 desno4 desno1 wireless-network desno2
-modules-center = tp2 clock tp1
-modules-right = levo3 pavolume levo4 levo1 debian-updates levo2 battery
+modules-left = desno3 temperature1 desno4 desno1 wireless-network desno2 desno3 cpu2 desno4 desno1 memory2 desno2
+modules-center = bt1 i3 bt2 tp2 clock tp1
+modules-right = levo3 kernel levo4 levo1 uptime levo2 levo3 pavolume levo4 levo1 debian-updates levo2 battery
 
 separator =
 
@@ -489,10 +489,11 @@ label = Cpu %percentage:3%%
 
 [module/clock]
 type = internal/date
+date = %A, %B %d
 format = <label>
 interval = 5
 time = %R
-label = %{A1:gsimplecal & disown:} %{A3:gsimplecal & disown:} %time%%{A} %{A}
+label = %{A1:gsimplecal & disown:} %{A3:gsimplecal & disown:} %date% - %time%%{A} %{A}
 format-background = #0170a8
 format-foreground = #000000
 
