@@ -174,10 +174,7 @@ exec        --no-startup-id nm-applet
 exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
-exec        --no-startup-id synclient TapButton1=1
-exec        --no-startup-id synclient TapButton2=3
-exec        --no-startup-id synclient VertScrollDelta=-68
-exec        --no-startup-id synclient HorizTwoFingerScroll=1
+exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
