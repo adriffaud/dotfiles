@@ -30,6 +30,7 @@
     ~/bin/volume: bin/volume
     ~/bin/brightness: bin/brightness
     ~/bin/screencast: bin/screencast
+    ~/bin/set-wall.sh: bin/set-wall.sh
     ~/.config/i3: config/i3/
     ~/.config/polybar: config/polybar
     ~/.config/dunst: config/dunst

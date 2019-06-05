@@ -1,5 +1,4 @@
 # Variables
-set $wallpaper ~/Pictures/Wallpapers/wallhaven-145984.jpg
 set $mod Mod4
 set $alt Mod1
 
@@ -134,7 +133,6 @@ assign [class="Google-chrome"] 1
 assign [class="Firefox"] 1
 assign [class="Slack"] 4
 assign [class="discord"] 4
-assign [class="Spotify"] 5
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec /home/adriffaud/bin/brightness up
@@ -162,16 +160,23 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class=".*"] title_format "  %title"
 
+# As Spotify starts withouth the right class, move it afterwards
+for_window [class="Spotify"] move to workspace 5
+
 # Show GNOME Calculator as a floating window
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
 
+# Show Slack Call minipanel on all workspaces
+for_window [class="Slack" title="Slack Call Minipanel"] floating enable, sticky enable
+
 # Autostart
-exec        --no-startup-id feh --bg-scale $wallpaper
+exec        --no-startup-id /home/adriffaud/bin/set-wall.sh
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
 exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
+exec        --no-startup-id xscreensaver
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R

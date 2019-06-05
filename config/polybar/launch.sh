@@ -13,4 +13,4 @@ while pgrep -u adriffaud -x polybar >/dev/null; do sleep 1; done
 # 	  WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar --reload default -c ~/.config/polybar/config &
 # done
 
-WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') polybar --reload default -c ~/.config/polybar/config &
+MONITOR=$(xrandr | grep "primary" | awk '{ print$1 }' ) WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') polybar --reload default -c ~/.config/polybar/config &
