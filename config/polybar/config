@@ -27,43 +27,20 @@ bground = #1D1F28
 fground = #f7f7f7
 accent = #1E88E5
 modulefg = #f7f7f7
-modulefg-alt = #f7f7f7
-
-;; Other
-trans = #00000000
-white = #FFFFFF
-black = #000000
 
 ;; Material Colors
 red = #e53935
-pink = #d81b60
-purple = #8e24aa
-deep-purple = #5e35b1
-indigo = #3949ab
-blue = #1e88e5
-light-blue = #039be5
-cyan = #00acc1
-teal = #00897b
-green = #43a047
-light-green = #7cb342
-lime = #c0ca33
-yellow = #fdd835
-amber = #ffb300
-orange = #fb8c00
-deep-orange = #f4511e
-brown = #6d4c41
 grey = #757575
-blue-gray = #546e7a
 
 [bar/default]
-monitor = DP1-2
+;monitor = DP1-2
 monitor-fallback = eDP1
 monitor-strict = false
 override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 22
+height = 24
 
 ; offset-x = 0%
 ; offset-y = 0%
@@ -76,25 +53,20 @@ radius = 0.0
 overline-size = 2
 overline-color = ${colors.accent}
 
-padding = 0
+padding = 1
 
-module-margin-left = 0
-module-margin-right = 0
+module-margin-left = 2
+module-margin-right = 2
 
-; font-0 = Ubuntu:size=10;2
-; font-1 = FontAwesome:size=10;2
-; font-2 = MaterialIcons:size=10;2
-font-0 = "NotoSans Nerd Font:size=10;2"
-font-1 = "NotoSans Nerd Font:size=16;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-0 = Ubuntu:size=10;2
+font-1 = FontAwesome:size=10;2
+font-2 = MaterialIcons:size=10;2
 
-modules-left = cpu memory temperature fan title
-modules-center = i3
-modules-right = date pavolume network backlight battery powermenu
+modules-left = i3
+modules-center = date cpu temperature fan
+modules-right = pavolume backlight battery
 
-separator = |
+separator = 
 spacing = 1
 dim-value = 1.0
 wm-name = 
@@ -102,36 +74,13 @@ locale =
 
 tray-position = right
 ; tray-detached = false
-; tray-maxsize = 16
+tray-maxsize = 16
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 4
+tray-padding = 1
 ; tray-scale = 1.0
 
 enable-ipc = true
-
-################################################################################
-
-[module/title]
-type = internal/xwindow
-
-format = <label>
-format-foreground = ${colors.modulefg}
-format-padding = 1
-
-label = %title%
-label-maxlen = 50
-
-################################################################################
-
-[module/fan]
-type = custom/script
-exec = ~/.config/polybar/scripts/fan.sh
-interval = 1
-format = <label>
-format-prefix = "  "
-format-foreground = ${colors.modulefg}
-format-padding = 1
 
 ################################################################################
 
@@ -147,33 +96,17 @@ wrapping-scroll = false
 reverse-scroll = true
 fuzzy-match = false
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-
 format = <label-state>
 
-label-focused = 
 label-focused-foreground = ${colors.modulefg}
 label-focused-padding = 2
-label-focused-underline = ${colors.blue}
 
-label-unfocused = 
 label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.grey}
 
-label-visible = 
 label-visible-padding = 2
 label-visible-foreground = ${colors.grey}
 
-label-urgent = 
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
 
@@ -207,7 +140,7 @@ full-at = 100
 poll-interval = 2
 time-format = %H:%M
 
-format-charging = <animation-charging> <label-charging>
+format-charging =  <label-charging>
 format-charging-foreground = ${colors.modulefg}
 format-charging-padding = 1
 
@@ -230,26 +163,12 @@ ramp-capacity-3 = 
 ramp-capacity-4 = 
 ramp-capacity-foreground = #fffff
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-foreground = #ffffff
-animation-charging-framerate = 750
-
 ################################################################################
 
 [module/cpu]
 type = internal/cpu
 interval = 1
-
-format = <label>
-format-prefix = " "
-format-padding = 1
-format-foreground = ${colors.modulefg}
-
-label = %percentage%%
+label =  %percentage%%
 
 ################################################################################
 
@@ -268,25 +187,14 @@ label = %time%
 
 ################################################################################
 
-[module/memory]
-;https://github.com/jaagr/polybar/wiki/Module:-memory
-type = internal/memory
+[module/fan]
+type = custom/script
+exec = ~/.config/polybar/scripts/fan.sh
 interval = 1
-; Available tokens:
-;   %percentage_used% (default)
-;   %percentage_free%
-;   %gb_used%
-;   %gb_free%
-;   %gb_total%
-;   %mb_used%
-;   %mb_free%
-;   %mb_total%
-label = %percentage_used%%
-
 format = <label>
-format-prefix = " "
-format-padding = 1
+format-prefix = "  "
 format-foreground = ${colors.modulefg}
+format-padding = 1
 
 ################################################################################
 
@@ -301,8 +209,8 @@ format-volume-padding = 1
 
 label-volume = %percentage%%
 
-format-muted-prefix = 
-label-muted = " Muted"
+format-muted-prefix = 
+label-muted = " "
 format-muted-foreground = ${colors.modulefg}
 format-muted-padding = 1
 
@@ -314,97 +222,8 @@ ramp-volume-3 = 
 ################################################################################
 
 [module/temperature]
-;https://github.com/jaagr/polybar/wiki/Module:-temperature
 type = internal/temperature
-; Thermal zone to use
-; To list all the zone types, run
-; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
-; Default: 0
-thermal-zone = 0
-
-; Full path of temperature sysfs path
-; Use `sensors` to find preferred temperature source, then run
-; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-; to find path to desired file
-; Default reverts to thermal zone setting
+interval = 1
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
 
-warn-temperature = 80
-format = <ramp> <label>
-format-foreground = ${colors.modulefg}
-format-underline =
-format-warn = <ramp> <label-warn>
-format-warn-underline =
-label = %temperature-c%
-label-warn =  %temperature-c%
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-
-################################################################################
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = shutdown
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = back
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = systemctl reboot
-
-menu-2-0 = shutdown
-menu-2-0-exec = systemctl poweroff
-menu-2-1 = back
-menu-2-1-exec = menu-open-0
-
-format-spacing = 1
-format-foreground = ${colors.modulefg}
-format-padding = 1
-
-label-open = 
-label-close = 
-label-separator = |
-
-################################################################################
-
-[module/network]
-;https://github.com/jaagr/polybar/wiki/Module:-network
-type = internal/network
-interface = ${env:WIRELESS}
-
-interval = 3.0
-; accumulate-stats = true
-unknown-as-up = true
-
-format-connected = <label-connected>
-; format-connected = <label-connected> <ramp-signal>
-format-connected-prefix = " "
-format-connected-foreground = ${colors.modulefg}
-format-connected-padding = 1
-
-format-disconnected = <label-disconnected>
-format-disconnected-foreground = ${colors.modulefg}
-format-disconnected-padding = 1
-
-label-connected = %essid% (%signal%%)
-label-disconnected = Not connected
-
-ramp-signal-0 = ▁
-ramp-signal-1 = ▂
-ramp-signal-2 = ▃
-ramp-signal-3 = ▄
-ramp-signal-4 = ▅
-ramp-signal-5 = ▆
-ramp-signal-6 = ▇
-ramp-signal-7 = █
-
-################################################################################
+label =  %temperature-c%

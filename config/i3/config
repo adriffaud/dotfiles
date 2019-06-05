@@ -7,7 +7,7 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:NotoSans Nerd Font 10
+font pango:Ubuntu 10
 
 # Colors
 set_from_resource	$active		active
@@ -30,7 +30,7 @@ floating_modifier $mod
 bindsym $mod+Return exec tilix
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
-bindsym $mod+l exec lock
+bindsym $mod+l exec /home/adriffaud/bin/lock
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -135,17 +135,16 @@ assign [class="Google-chrome"] 1
 assign [class="Firefox"] 1
 assign [class="Slack"] 4
 assign [class="discord"] 4
-assign [class="Caprine"] 4
 assign [class="Spotify"] 5
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec brightness up
-bindsym XF86MonBrightnessDown exec brightness down
+bindsym XF86MonBrightnessUp exec /home/adriffaud/bin/brightness up
+bindsym XF86MonBrightnessDown exec /home/adriffaud/bin/brightness down
 
 # volume
-bindsym XF86AudioRaiseVolume exec volume up
-bindsym XF86AudioLowerVolume exec volume down
-bindsym XF86AudioMute exec volume mute
+bindsym XF86AudioRaiseVolume exec /home/adriffaud/bin/volume up
+bindsym XF86AudioLowerVolume exec /home/adriffaud/bin/volume down
+bindsym XF86AudioMute exec /home/adriffaud/bin/volume mute
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Media keys
@@ -177,6 +176,7 @@ exec        --no-startup-id numlockx
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
+exec        --no-startup-id syncthing-gtk
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
 exec /usr/lib/slack/slack --disable-gpu
