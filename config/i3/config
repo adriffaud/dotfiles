@@ -26,8 +26,7 @@ client.focused_inactive         $background     #222D32         $foreground     
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec tilix
+bindsym $mod+Return exec gnome-terminal
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
 bindsym $mod+l exec /home/adriffaud/bin/lock
