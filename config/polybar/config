@@ -50,8 +50,7 @@ foreground = ${colors.fground}
 
 radius = 0.0
 
-overline-size = 2
-overline-color = ${colors.accent}
+line-size = 2
 
 padding = 1
 
@@ -96,16 +95,21 @@ wrapping-scroll = false
 reverse-scroll = true
 fuzzy-match = false
 
-format = <label-state>
+format = <label-mode><label-state>
+
+label-mode-foreground = ${colors.modulefg}
+label-mode-padding = 2
 
 label-focused-foreground = ${colors.modulefg}
 label-focused-padding = 2
+label-focused-underline = ${colors.grey}
 
 label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.grey}
 
 label-visible-padding = 2
 label-visible-foreground = ${colors.grey}
+label-visible-underline = ${colors.grey}
 
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
@@ -151,7 +155,7 @@ format-discharging-padding = 1
 label-charging = %percentage%%
 label-discharging = %percentage%%
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-foreground = ${colors.modulefg}
 
 format-foreground = ${colors.modulefg}
