@@ -160,14 +160,15 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class=".*"] title_format "  %title"
 
-# Show Firefox downloads in floating mode
+# Show Firefox utility windows in floating mode
 for_window [class="Firefox" window_role="Organizer"] floating enable
+for_window [class="Firefox" window_role="About"] floating enable
 # As Spotify starts withouth the right class, move it afterwards
 for_window [class="Spotify"] move to workspace 5
 # Show GNOME Calculator as a floating window
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
 # Show Slack Call minipanel on all workspaces
-for_window [class="Slack" title="Slack Call Minipanel"] floating enable, sticky enable
+for_window [class="Slack" title="Slack Call Minipanel"] kill
 
 # Autostart
 exec        --no-startup-id /home/adriffaud/bin/set-wall.sh
