@@ -31,7 +31,7 @@
 	# the top and down respectevly.
 	# The width can be negative.  In this case the actual width is the
 	# screen width minus the width defined in within the geometry option.
-	geometry = "320x5-20+40"
+	geometry = "250x50-20+40"
 
 	# Show how many messages are currently hidden (because of geometry).
 	indicate_hidden = yes
@@ -127,7 +127,7 @@
 	#   %n  progress value if set without any extra characters
 	# %% Literal %
 	# Markup is allowed
-	format = "<span foreground='#f3f4f5'><b>%s %p</b></span>\n%b"
+	format = "<b>%s</b>\n%b"
 
 	# Alignment of message text.
 	# Possible values are "left", "center" and "right".
