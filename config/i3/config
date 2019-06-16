@@ -16,7 +16,7 @@ set_from_resource	$foreground	foreground
 set_from_resource	$urgent		urgent
 
 # class                         border          background      text            indicator
-client.focused                  #8fbcbb         #8fbcbb         #2e3440         #FFCC66
+client.focused                  #4c566a         #4c566a         #d8dee9         #FFCC66
 client.focused_inactive         #2e3440         #2e3440         #d8dee9         #484E50
 client.unfocused                #2e3440         #2e3440         #d8dee9         #292D2E
 #client.urgent                  $urgent         $active         $foreground     #900000
