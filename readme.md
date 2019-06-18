@@ -8,7 +8,7 @@ My dotfiles for i3, zsh, polybar, dunst...
 
 ![busy](./busy.png)
 
-[Wallpaper](https://whvn.cc/145984)
+[Wallpaper](https://whvn.cc/p8j29p)
 
 ## Setup
 
