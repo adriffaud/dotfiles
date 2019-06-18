@@ -28,7 +28,7 @@ floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
-bindsym $mod+l exec /home/adriffaud/bin/lock
+bindsym $mod+l exec /home/adriffaud/.local/bin/betterlockscreen -l dim
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -171,7 +171,7 @@ for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enabl
 for_window [class="Slack" title="Slack Call Minipanel"] kill
 
 # Autostart
-exec        --no-startup-id /home/adriffaud/bin/set-wall.sh
+exec        --no-startup-id source ~/.fehbg
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
 exec        --no-startup-id blueman-applet
