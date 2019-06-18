@@ -13,12 +13,11 @@ My dotfiles for i3, zsh, polybar, dunst...
 ## Setup
 
 - Gtk theme: `Arc Darker`
-- Icons: `Newaita`
-- Music Player: `Spotify`
+- Icons: `Arc-OSX-D`
 - Shell: `zsh`
 - Terminal Emulator: `tilix`
 - Text Editor: `vscode/spacemacs/vim`
-- Theme: `Material`
+- Theme: `Nord`
 - Web Browser: `Mozilla Firefox`
 - Window Manager: `i3wm`
 - Linux Distribution: `Debian Linux Buster (testing)`
