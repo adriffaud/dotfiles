@@ -1,4 +1,4 @@
-# vi: ft=cfg
+# vi: ft=dosini
 
 [global]
 	### Display ###
@@ -63,10 +63,10 @@
 
 	# Defines width in pixels of frame around the notification window.
 	# Set to 0 to disable.
-	frame_width = 1
+	frame_width = 2
 
 	# Defines color of the frame around the notification window.
-	frame_color = "#232323"
+	frame_color = "#4c566a"
 
 	# Define a color for the separator.
 	# possible values are:
@@ -127,7 +127,7 @@
 	#   %n  progress value if set without any extra characters
 	# %% Literal %
 	# Markup is allowed
-	format = "<b>%s</b>\n%b"
+	format = "<span foreground='#d8dee9'><b>%s %p</b></span>\n%b"
 
 	# Alignment of message text.
 	# Possible values are "left", "center" and "right".
@@ -156,7 +156,7 @@
 	hide_duplicates_count = no
 
 	# Display indicators for URLs (U) and actions (A).
-	show_indicators = yes
+	show_indicators = no
 
 	### Icons ###
 
@@ -215,19 +215,19 @@
 	context = mod4+shift+period
 
 [urgency_low]
-	background = "#232323"
-	foreground = "#a8a8a8"
+	background = "#2e3440"
+	foreground = "#d8dee9"
 	timeout = 4
 
 [urgency_normal]
-	background = "#232323"
-	foreground = "#a8a8a8"
+	background = "#2e3440"
+	foreground = "#d8dee9"
 	timeout = 4
 
 [urgency_critical]
-	background = "#d64e4e"
-	foreground = "#f0e0e0"
-	frame_color = "#d64e4e"
+	background = "#bf616a"
+	foreground = "#d8dee9"
+	frame_color = "#bf616a"
 	timeout = 8
 
 # Every section that isn't one of the above is interpreted as a rules to

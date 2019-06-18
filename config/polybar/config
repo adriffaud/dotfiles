@@ -30,7 +30,7 @@ modulefg = #D8DEE9
 
 ;; Material Colors
 red = #e53935
-grey = #757575
+grey = #4c566a
 
 [bar/default]
 monitor = ${env:MONITOR:eDP1}
