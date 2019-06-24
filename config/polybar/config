@@ -23,7 +23,7 @@ compositing-border = over
 
 [colors]
 ;; Active Colors
-bground = #2e3440
+bground = #dd2e3440
 fground = #D8DEE9
 accent = #1E88E5
 modulefg = #D8DEE9
