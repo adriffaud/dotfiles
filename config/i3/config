@@ -25,7 +25,7 @@ client.unfocused                #2e3440         #2e3440         #d8dee9         
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec kitty
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
 bindsym $mod+l exec /home/adriffaud/.local/bin/betterlockscreen -l dim
@@ -174,10 +174,10 @@ for_window [class="Slack" title="Slack Call Minipanel"] kill
 exec        --no-startup-id source ~/.fehbg
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
-exec        --no-startup-id blueman-applet
+#exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
-exec        --no-startup-id xscreensaver
+#exec        --no-startup-id xautolock -
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
