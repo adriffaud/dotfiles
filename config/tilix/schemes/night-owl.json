@@ -1,0 +1,32 @@
+{
+  "name": "Night Owl",
+  "foreground-color": "#d6deeb",
+  "background-color": "#011627",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#ffffff",
+  "cursor-background-color": "#efefef",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#011627",
+    "#EF5350",
+    "#22da6e",
+    "#addb67",
+    "#82aaff",
+    "#c792ea",
+    "#21c7a8",
+    "#ffffff",
+    "#575656",
+    "#ef5350",
+    "#22da6e",
+    "#ffeb95",
+    "#82aaff",
+    "#c792ea",
+    "#7fdbca",
+    "#ffffff"
+  ]
+}
