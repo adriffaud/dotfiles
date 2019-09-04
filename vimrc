@@ -34,8 +34,7 @@ Plugin 'ap/vim-css-color'
 "Plugin 'tpope/vim-fireplace'
 
 " Themes
-"Plugin 'arcticicestudio/nord-vim'
-Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'haishanh/night-owl.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,7 +47,7 @@ filetype plugin indent on
 
 set termguicolors
 set background=dark
-colorscheme hybrid_reverse
+colorscheme night-owl
 
 set term=xterm-256color
 set guioptions-=T  "remove toolbar
@@ -149,7 +148,7 @@ nnoremap <silent> ]B :blast<CR>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "hybrid"
+" let g:airline_theme = "hybrid"
 
 " visual preview
 "set inccommand=nosplit
@@ -167,11 +166,3 @@ let g:ale_lint_on_text_changed = 0
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
-" Nord config
-" let g:nord_italic = 1
-" let g:nord_underline = 1
-
-" Material theme config
-let g:enable_bold_font = 1
-let g:enable_italic_font = 1
-let g:hybrid_transparent_background = 1
