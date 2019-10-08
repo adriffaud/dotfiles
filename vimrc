@@ -35,6 +35,7 @@ Plugin 'ap/vim-css-color'
 
 " Themes
 Plugin 'haishanh/night-owl.vim'
+Plugin 'drewtempelmeyer/palenight.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,7 +48,7 @@ filetype plugin indent on
 
 set termguicolors
 set background=dark
-colorscheme night-owl
+colorscheme palenight
 
 set term=xterm-256color
 set guioptions-=T  "remove toolbar
@@ -148,7 +149,7 @@ nnoremap <silent> ]B :blast<CR>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme = "hybrid"
+let g:airline_theme = "palenight"
 
 " visual preview
 "set inccommand=nosplit
