@@ -23,14 +23,15 @@ compositing-border = over
 
 [colors]
 ;; Active Colors
-bground = #dd2e3440
-fground = #D8DEE9
+bground = #E0292D3E
+fground = #ffffff
 accent = #1E88E5
-modulefg = #D8DEE9
+modulefg = #ffffff
 
 ;; Material Colors
 red = #e53935
 grey = #4c566a
+blue = #82AAFF
 
 [bar/default]
 monitor = ${env:MONITOR:eDP1}
@@ -57,9 +58,10 @@ padding = 1
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Ubuntu:size=10;2
-font-1 = FontAwesome:size=10;2
-font-2 = MaterialIcons:size=10;2
+font-0 = Ubuntu:size=10;1
+font-1 = "Font Awesome 5 Free:style=Regular:size=10;0"
+font-2 = "Font Awesome 5 Free:style=Solid:size=10;0"
+;;font-2 = MaterialDesignIcons:size=10;2
 
 modules-left = i3
 modules-center = date cpu temperature fan
@@ -72,12 +74,10 @@ wm-name =
 locale = 
 
 tray-position = right
-; tray-detached = false
 tray-maxsize = 16
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 1
-; tray-scale = 1.0
 
 enable-ipc = true
 
@@ -97,12 +97,13 @@ fuzzy-match = false
 
 format = <label-mode><label-state>
 
+label-mode = %mode%
 label-mode-foreground = ${colors.modulefg}
 label-mode-padding = 2
 
 label-focused-foreground = ${colors.modulefg}
 label-focused-padding = 2
-label-focused-underline = ${colors.grey}
+label-focused-underline = ${colors.blue}
 
 label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.grey}
@@ -114,22 +115,23 @@ label-visible-underline = ${colors.grey}
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
 
+ws-icon-0 = 1;♚
+ws-icon-1 = 2;♛
+ws-icon-2 = 3;♜
+ws-icon-3 = 4;♝
+ws-icon-4 = 5;♞
+ws-icon-default = ♟
+
 ################################################################################
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
 
-format = <ramp> <label>
+format =  <label>
 format-foreground = ${colors.modulefg}
 
 label = %percentage%%
-
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
 
 ################################################################################
 
@@ -155,7 +157,7 @@ format-discharging-padding = 1
 label-charging = %percentage%%
 label-discharging = %percentage%%
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-foreground = ${colors.modulefg}
 
 format-foreground = ${colors.modulefg}
@@ -165,6 +167,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+
 ramp-capacity-foreground = #fffff
 
 ################################################################################
@@ -213,8 +216,7 @@ format-volume-padding = 1
 
 label-volume = %percentage%%
 
-format-muted-prefix = 
-label-muted = " "
+label-muted = 
 format-muted-foreground = ${colors.modulefg}
 format-muted-padding = 1
 
