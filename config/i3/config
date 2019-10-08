@@ -28,7 +28,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
-bindsym $mod+l exec /home/adriffaud/.local/bin/betterlockscreen -l dim
+bindsym $mod+l exec betterlockscreen -l dimblur
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -151,14 +151,20 @@ bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 # Screenshot
-bindsym Print exec xfce4-screenshooter
+bindsym Print exec ~/bin/screenshot
+bindsym Shift+Print exec ~/bin/screenshot -s
 bindsym Ctrl+Print exec ~/bin/screencast
 bindsym Ctrl+Shift+Print exec killall ffmpeg
 
 # Hide window border if only window
 hide_edge_borders both
-for_window [class="^.*"] border pixel 1
-for_window [class=".*"] title_format "  %title"
+for_window [class=".*"] border pixel 0
+
+# i3 Gaps
+smart_gaps on
+smart_borders on
+gaps outer 5
+gaps inner 7
 
 # Show Firefox utility windows in floating mode
 for_window [class="Firefox" window_role="Organizer"] floating enable
@@ -171,7 +177,6 @@ for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enabl
 for_window [class="Slack" title="Slack Call Minipanel"] kill
 
 # Autostart
-exec        --no-startup-id source ~/.fehbg
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
 #exec        --no-startup-id blueman-applet
@@ -182,6 +187,7 @@ exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
 exec        --no-startup-id syncthing-gtk
+exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
-exec /usr/lib/slack/slack --disable-gpu
+exec /usr/lib/slack/slack
