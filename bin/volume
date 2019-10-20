@@ -10,7 +10,7 @@ function get_volume {
 }
 
 function is_mute {
-	amixer get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
+	pactl list sinks | grep '^[[:space:]]Mute: ' | tail -n 1 | grep yes > /dev/null
 }
 
 function send_notification {
