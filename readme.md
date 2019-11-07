@@ -8,19 +8,19 @@ My dotfiles for i3, zsh, polybar, dunst...
 
 ![busy](./busy.png)
 
-[Wallpaper](https://whvn.cc/p8j29p)
+[Wallpaper](https://whvn.cc/md27xm)
 
 ## Setup
 
-- Gtk theme: `Arc Darker`
-- Icons: `Arc-OSX-D`
+- Gtk theme: `Arc Dark`
+- Icons: `Arc`
 - Shell: `zsh`
-- Terminal Emulator: `tilix`
-- Text Editor: `vscode/spacemacs/vim`
-- Theme: `Nord`
+- Terminal Emulator: `kitty`
+- Text Editor: `vscode/vim`
+- Theme: `Palenight`
 - Web Browser: `Mozilla Firefox`
-- Window Manager: `i3wm`
-- Linux Distribution: `Debian Linux Buster (testing)`
+- Window Manager: `i3-gaps`
+- Linux Distribution: `Arch Linux`
 
 ## Install
 
