@@ -36,6 +36,5 @@
     ~/.config/polybar: config/polybar
     ~/.config/dunst: config/dunst
     ~/.config/kitty: config/kitty
-    ~/.config/tilix: config/tilix
     ~/.config/rofi: config/rofi
     ~/.config/compton.conf: config/compton.conf
