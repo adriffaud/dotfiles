@@ -58,14 +58,13 @@ padding = 1
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Ubuntu:size=10;1
+font-0 = "xos4 Terminus":size=10;1
 font-1 = "Font Awesome 5 Free:style=Regular:size=10;0"
 font-2 = "Font Awesome 5 Free:style=Solid:size=10;0"
-;;font-2 = MaterialDesignIcons:size=10;2
 
 modules-left = i3
 modules-center = date cpu temperature fan
-modules-right = pavolume backlight battery
+modules-right = pavolume backlight battery keyboard
 
 separator = 
 spacing = 1
@@ -114,13 +113,6 @@ label-visible-underline = ${colors.grey}
 
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
-
-ws-icon-0 = 1;♚
-ws-icon-1 = 2;♛
-ws-icon-2 = 3;♜
-ws-icon-3 = 4;♝
-ws-icon-4 = 5;♞
-ws-icon-default = ♟
 
 ################################################################################
 
@@ -224,6 +216,15 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
+
+################################################################################
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
 
 ################################################################################
 

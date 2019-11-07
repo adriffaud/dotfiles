@@ -6,7 +6,7 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:Ubuntu 10
+font pango:"xos4 Terminus" 10
 
 # Colors
 set_from_resource	$active		active
@@ -15,8 +15,8 @@ set_from_resource	$background	background
 set_from_resource	$foreground	foreground
 set_from_resource	$urgent		urgent
 
-# class                         border          background      text            indicator
-client.focused                  #4c566a         #4c566a         #d8dee9         #FFCC66
+# class                         border          background      text            indicator		child-border
+client.focused                  #4c566a         #4c566a         #d8dee9         #FFCC66			#1E88E5
 client.focused_inactive         #2e3440         #2e3440         #d8dee9         #484E50
 client.unfocused                #2e3440         #2e3440         #d8dee9         #292D2E
 #client.urgent                  $urgent         $active         $foreground     #900000
@@ -28,7 +28,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
-bindsym $mod+l exec betterlockscreen -l dimblur
+bindsym $mod+l exec betterlockscreen -l dimblur -- --timestr="%H:%M"
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -78,6 +78,7 @@ bindsym $mod+Shift+q focus child
 # Cycle through workspaces with Mod + PageNext/Prev
 bindsym $mod+Next workspace next
 bindsym $mod+Prior workspace prev
+bindsym $mod+Tab workspace back_and_forth
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -158,7 +159,7 @@ bindsym Ctrl+Shift+Print exec killall ffmpeg
 
 # Hide window border if only window
 hide_edge_borders both
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 2
 
 # i3 Gaps
 smart_gaps on
@@ -179,9 +180,10 @@ for_window [class="Slack" title="Slack Call Minipanel"] kill
 # Autostart
 exec        --no-startup-id compton
 exec        --no-startup-id nm-applet
-#exec        --no-startup-id blueman-applet
+exec        --no-startup-id blueman-applet
 exec        --no-startup-id pasystray
 exec        --no-startup-id numlockx
+exec        --no-startup-id setxkbmap -layout us,fr
 #exec        --no-startup-id xautolock -
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
