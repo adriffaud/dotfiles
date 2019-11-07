@@ -1,6 +1,7 @@
 configuration {
+	lines: 5;
 	show-icons: true;
-	theme: "Arc-Dark";
+	theme: "palenight";
 	display-window: "Window";
 	display-drun: "Search";
 }
