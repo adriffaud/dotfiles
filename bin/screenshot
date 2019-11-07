@@ -16,5 +16,3 @@ NAME=screenshot-$(date +%Y-%m-%d-%H-%M).png
 maim $ARGS ~/Pictures/$NAME
 
 notify-send "$NAME saved"
-
-xdg-open ~/Pictures/$NAME
