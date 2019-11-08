@@ -102,7 +102,7 @@ label-mode-padding = 2
 
 label-focused-foreground = ${colors.modulefg}
 label-focused-padding = 2
-label-focused-underline = ${colors.blue}
+label-focused-underline = ${colors.accent}
 
 label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.grey}
