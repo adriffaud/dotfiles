@@ -11,7 +11,7 @@ do
 	esac
 done
 
-NAME=screenshot-$(date +%Y-%m-%d-%H-%M).png
+NAME=screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
 
 maim $ARGS ~/Pictures/$NAME
 
