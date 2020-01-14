@@ -190,7 +190,7 @@ exec				--no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 #exec        --no-startup-id synclient HorizScrollDelta=-68
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
-exec        --no-startup-id syncthing-gtk
+exec        --no-startup-id syncthing-gtk -m
 exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
