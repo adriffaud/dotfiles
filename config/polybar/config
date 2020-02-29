@@ -25,10 +25,10 @@ compositing-border = over
 ;; Active Colors
 bground = #E0292D3E
 fground = #ffffff
-accent = #1E88E5
+accent = #82AAFF
 modulefg = #ffffff
 
-;; Material Colors
+;; Palenight Colors
 red = #e53935
 grey = #4c566a
 blue = #82AAFF
@@ -41,7 +41,7 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 24
+height = 28
 
 ; offset-x = 0%
 ; offset-y = 0%
@@ -63,7 +63,7 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=10;0"
 
 modules-left = i3
 modules-center = time date
-modules-right = pavolume battery keyboard
+modules-right = download pavolume battery keyboard
 
 separator = 
 spacing = 1
@@ -181,6 +181,55 @@ label-foreground = ${colors.modulefg}
 
 ################################################################################
 
+[module/download]
+type = internal/network
+interface = ${env:WIRELESS}
+label-connected =  %downspeed:9%
+
+################################################################################
+
+[module/download-eth]
+type = internal/network
+interface = enp59s0u1u2
+label-connected =  %local_ip% %downspeed:9%  %upspeed:9% 
+
+################################################################################
+
+[module/cpu]
+type = internal/cpu
+label =  %percentage%%
+
+################################################################################
+
+[module/ram]
+type = internal/memory
+label =  %percentage_used%%
+
+################################################################################
+
+[module/temp]
+type = internal/temperature
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+label =  %temperature-c%
+
+################################################################################
+
+[module/fan]
+type = custom/script
+exec = /home/adriffaud/.config/polybar/scripts/fan.sh
+interval = 1
+label =  %output%
+
+################################################################################
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song> <label-time>
+label-song =  %artist% - %album% - %title%
+label-time = %elapsed% / %total%
+
+################################################################################
+
 [module/pavolume]
 type = internal/pulseaudio
 sink = alsa_output.pci-0000_00_1f.3.analog-stereo
@@ -213,3 +262,42 @@ layout-icon-default = 
 blacklist-0 = num lock
 blacklist-1 = scroll lock
 blacklist-2 = caps lock
+
+[bar/second]
+monitor = DP-1-2-1
+monitor-strict = true
+override-redirect = false
+bottom = false
+fixed-center = true
+width = 100%
+height = 28
+
+; offset-x = 0%
+; offset-y = 0%
+
+background = ${colors.bground}
+foreground = ${colors.fground}
+
+radius = 0.0
+
+line-size = 2
+
+padding = 1
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = "xos4 Terminus":size=10;1
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;0"
+
+modules-left = cpu ram temp fan
+modules-center = mpd
+modules-right = download-eth
+
+separator = 
+spacing = 1
+dim-value = 1.0
+wm-name = 
+locale = 
+
+enable-ipc = true
