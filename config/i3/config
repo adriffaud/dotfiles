@@ -129,6 +129,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+x move workspace to output right
 bindsym $mod+c move workspace to output up
 
+# move chat workspace to second screen
+# workspace 4 output
+
 # pin apps to some workspace
 assign [class="Google-chrome"] 1
 assign [class="Firefox"] 1
@@ -168,14 +171,17 @@ gaps outer 5
 gaps inner 7
 
 # Show Firefox utility windows in floating mode
-for_window [class="Firefox" window_role="Organizer"] floating enable
-for_window [class="Firefox" window_role="About"] floating enable
-# As Spotify starts withouth the right class, move it afterwards
-for_window [class="Spotify"] move to workspace 5
+for_window [class="firefox" window_role="Organizer"] floating enable
+for_window [class="firefox" window_role="About"] floating enable
+
 # Show GNOME Calculator as a floating window
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
+
 # Show Slack Call minipanel on all workspaces
 for_window [class="Slack" title="Slack Call Minipanel"] kill
+
+# Make arandr window floating
+for_window [class="Arandr"] floating enable
 
 # Autostart
 exec        --no-startup-id compton
@@ -187,4 +193,4 @@ exec        --no-startup-id syndaemon -i 0.5 -t -K -R
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
 
-exec /usr/lib/slack/slack
+exec        --no-startup-id /usr/lib/slack/slack
