@@ -268,6 +268,37 @@ blacklist-0 = num lock
 blacklist-1 = scroll lock
 blacklist-2 = caps lock
 
+################################################################################
+
+[module/power]
+type = custom/menu
+expand-right = true
+
+label-open = 
+label-close = 
+label-separator = |
+format-spacing = 1
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = shutdown
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = back
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = systemctl reboot
+
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = back
+menu-2-1-exec = menu-open-0
+
+label-open-background = ${colors.accent}
+label-open-padding = 2
+
+################################################################################
+
 [bar/second]
 monitor = DP-1-2-1
 monitor-strict = true
