@@ -23,7 +23,7 @@ compositing-border = over
 
 [colors]
 ;; Active Colors
-bground = #E0292D3E
+bground = #292D3E
 fground = #ffffff
 accent = #82AAFF
 modulefg = #ffffff
@@ -49,17 +49,22 @@ height = 28
 background = ${colors.bground}
 foreground = ${colors.fground}
 
+border-bottom-size = 2
+border-color = ${colors.accent}
+
 radius = 0.0
 
 line-size = 2
 
 padding = 1
+padding-right = 0
 
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "xos4 Terminus":size=10;1
-font-1 = "Font Awesome 5 Free:style=Solid:size=10;0"
+font-0 = "xos4 Terminus":size=10;2
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;2"
+font-2 = "Font Awesome 5 Brands:style=Solid:size=10;2"
 
 modules-left = i3
 modules-center = time date
@@ -95,14 +100,14 @@ label-mode-padding = 2
 
 label-focused-foreground = ${colors.modulefg}
 label-focused-padding = 2
-label-focused-underline = ${colors.accent}
+label-focused-overline = ${colors.accent}
 
 label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.grey}
 
 label-visible-padding = 2
 label-visible-foreground = ${colors.grey}
-label-visible-underline = ${colors.grey}
+label-visible-overline = ${colors.grey}
 
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
