@@ -1,8 +1,9 @@
 configuration {
-	lines: 5;
+	lines: 8;
 	show-icons: true;
 	theme: "palenight";
 	display-window: "Window";
 	display-drun: "Search";
+	width: 30;
 }
 

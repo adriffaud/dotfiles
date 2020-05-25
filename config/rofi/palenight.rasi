@@ -6,40 +6,40 @@
     scrollbarcolor: #3b4252;
     foregroundcolor: #ffffff;
     foregroundcolorinverse: #ffffff;
-    selectioncolor: #1E88E5;
+    selectioncolor: #82AAFF;
 
     border-color: #292D3E;
     background-color: @backgroundcolor;
     text-color: @foregroundcolor;
-    margin: 5;
+    margin: 2;
     margin-bottom: 0;
     margin-top: 0;
     spacing: 0;
 }
 
 #listview {
-    spacing: 4;
+    spacing: 2;
     scrollbar: false;
-    margin: 4;
+    margin: 2;
     dynamic: true;
 }
 
 #window {
     background-color: @backgroundcolor;
-    border-color: #1E88E5;
+    border-color: #82AAFF;
     border: 1px;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 #mainbox {
     border: 0;
     padding: 0;
     background-color: @backgroundcoloralternate;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 #element {
-    padding: 16;
+    padding: 10;
     border: 0 0 0 0;
     border-color: @separatorcolor;
     background-color: @backgroundcoloralternate;
@@ -48,7 +48,7 @@
 #element.selected.normal {
     background-color: @selectioncolor;
     text-color: @foregroundcolorinverse;
-    border-radius: 10px;
+    border-radius: 2px;
 
     border: 0 0 0 0;
     border-color: @separatorcolor;
