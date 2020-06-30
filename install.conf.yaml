@@ -38,3 +38,4 @@
     ~/.config/kitty: config/kitty
     ~/.config/rofi: config/rofi
     ~/.config/compton.conf: config/compton.conf
+    ~/.config/ncmpcpp: config/ncmpcpp
