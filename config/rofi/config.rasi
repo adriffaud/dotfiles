@@ -4,6 +4,6 @@ configuration {
 	theme: "palenight";
 	display-window: "Window";
 	display-drun: "Search";
-	width: 30;
+	width: 35;
 }
 
