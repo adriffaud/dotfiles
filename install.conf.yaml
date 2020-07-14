@@ -36,6 +36,7 @@
     ~/.config/polybar: config/polybar
     ~/.config/dunst: config/dunst
     ~/.config/kitty: config/kitty
+    ~/.config/alacritty: config/alacritty
     ~/.config/rofi: config/rofi
     ~/.config/compton.conf: config/compton.conf
     ~/.config/ncmpcpp: config/ncmpcpp
