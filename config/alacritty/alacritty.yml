@@ -561,6 +561,10 @@ background_opacity: 0.9
   #
 
 colors:
+  cursor:
+    text: '#292d3e'
+    cursor: '#7e57c2'
+
   # Default colors
   primary:
     background: '#292D3E'
