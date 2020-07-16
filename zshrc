@@ -17,11 +17,14 @@ function policy_pprint {
     eval "${filtered}"
 }
 
-export TERM="screen-256color"
+#export TERM="screen-256color"
+alias ssh="TERM=xterm-256color ssh"
 export EDITOR="vim"
 export VISUAL="vim"
 
-export GOPATH=$HOME/Dev/Go
+alias asciidoctor='docker run --rm -it -v `pwd`:/documents/ -u 1000:1000 asciidoctor/docker-asciidoctor asciidoctor'
+
+export GOPATH=$HOME/dev/Go
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
 
 function print_colors() {
