@@ -44,7 +44,7 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 24
+height = 22
 
 ; offset-x = 0%
 ; offset-y = 0%
@@ -58,17 +58,23 @@ border-color = ${colors.accent}
 radius = 0.0
 
 line-size = 2
+line-color = #000000
 
-padding = 0
+padding-left = 0
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 1
 
 font-0 = "IBM Plex Mono:size=10;1"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = i3
-modules-center = time
-modules-right = cpu temp fan ram download pavolume battery
+modules-left = i3 xwindow
+modules-center =
+;modules-right = cpu temperature ram download pavolume keyboard
+modules-right = download cpu temperature ram pavolume arch-aur-updates date
 
 separator = |
 spacing = 0
@@ -77,6 +83,16 @@ wm-name =
 locale =
 
 enable-ipc = true
+
+################################################################################
+
+[module/arch-aur-updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-all-updates.sh
+interval = 1000
+label = %output%
+format-prefix = "  "
+format-foreground = ${colors.blue}
 
 ################################################################################
 
@@ -96,138 +112,112 @@ format = <label-mode><label-state>
 
 label-mode = %mode%
 label-mode-foreground = ${colors.modulefg}
-label-mode-padding = 1
+label-mode-padding-right = 1
 
 label-focused-foreground = ${colors.modulefg}
-label-focused-padding = 1
+label-focused-padding-right = 1
 
-label-unfocused-padding = 1
+label-unfocused-padding-right = 1
 label-unfocused-foreground = ${colors.grey}
 
-label-visible-padding = 1
+label-visible-padding-right = 1
 label-visible-foreground = ${colors.grey}
 
 label-urgent-foreground = ${colors.red}
-label-urgent-padding = 2
+label-urgent-padding-right = 1
 
 ################################################################################
 
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-
-format =  <label>
-format-foreground = ${colors.modulefg}
-
-label = %percentage%%
+[module/networkspeedup]
+;https://github.com/jaagr/polybar/wiki/Module:-network
+type = internal/network
+interface = enp39s0
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #fefefe
+format-connected-foreground = #fefefe
+format-connected-background = #8d62a9
 
 ################################################################################
 
-[module/battery]
-;https://github.com/jaagr/polybar/wiki/Module:-battery
+[module/networkspeeddown]
+;https://github.com/jaagr/polybar/wiki/Module:-network
+type = internal/network
+interface = enp39s0
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = "  "
+format-connected-prefix-foreground = #fefefe
+format-connected-foreground = #fefefe
+format-connected-background = #8d62ad
 
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 100
-
-poll-interval = 2
-time-format = %H:%M
-
-format-charging =  <label-charging>
-format-charging-foreground = ${colors.modulefg}
-format-charging-padding = 1
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = ${colors.modulefg}
-format-discharging-padding = 1
-
-label-charging = %percentage%%
-label-discharging = %percentage%%
-
-format-full-prefix = " "
-format-full-foreground = ${colors.modulefg}
-
-format-foreground = ${colors.modulefg}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-ramp-capacity-foreground = #fffff
+################################################################################
 
 [module/date]
+;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
-interval = 1
+; Seconds to sleep between updates
+interval = 5
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = " %a %b %d"
+time = %H:%M%
+format-prefix = " "
+format-foreground = ${colors.cyan}
+label = "%date% %time% "
 
-date = %A, %d %B
-time = %H:%M
+################################################################################
 
-label = %date% - %time%
-label-padding = 1
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = ${colors.green}
+
+################################################################################
+
+[module/xwindow]
+;https://github.com/jaagr/polybar/wiki/Module:-xwindow
+type = internal/xwindow
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 70
+
+format-foreground = ${colors.magenta}
 
 ################################################################################
 
 [module/download]
 type = internal/network
 interface = enp39s0
-label-connected = net: %downspeed% - %upspeed%
+label-connected =  %downspeed%  %upspeed%
 format-connected-foreground = ${colors.green}
 
 ################################################################################
 
 [module/cpu]
 type = internal/cpu
-label = cpu: %percentage%%
+label = %percentage%%
+format-prefix = " "
 format-foreground = ${colors.yellow}
 
 ################################################################################
 
 [module/ram]
 type = internal/memory
-label =  %percentage_used%%
+label = %percentage_used%%
+format-prefix = " "
+format-foreground = ${colors.red}
 
-################################################################################
-
-[module/temp]
-type = internal/temperature
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
-label =  %temperature-c%
-
-################################################################################
-
-[module/fan]
-type = custom/script
-exec = /home/adriffaud/.config/polybar/scripts/fan.sh
-interval = 1
-label =  %output%
-
-################################################################################
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song> <label-time>
-label-song =  %artist% - %album% - %title%
-label-time = %elapsed% / %total%
-
-################################################################################
-
-[module/pavolume]
-type = internal/pulseaudio
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
-user-ui-max = false
-
-format-volume = vol: <label-volume>
-format-volume-foreground = ${colors.blue}
-format-volume-padding = 1
-
-label-volume = %percentage%%
-
-label-muted = muted
-format-muted-foreground = ${colors.blue}
-format-muted-padding = 1
 
 ################################################################################
 
@@ -245,3 +235,9 @@ format-foreground = ${colors.cyan}
 
 ################################################################################
 
+[module/temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+label= %temperature-c%
+format-prefix = " "
+format-foreground = ${colors.magenta}
