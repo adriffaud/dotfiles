@@ -24,9 +24,6 @@
     ~/.Xresources:
       path: Xresources
       create: false
-    ~/.spacemacs:
-      path: spacemacs
-      create: false
     ~/bin/volume: bin/volume
     ~/bin/brightness: bin/brightness
     ~/bin/screencast: bin/screencast
@@ -40,3 +37,4 @@
     ~/.config/rofi: config/rofi
     ~/.config/compton.conf: config/compton.conf
     ~/.config/ncmpcpp: config/ncmpcpp
+    ~/.config/fish/fishfile: config/fish/fishfile
