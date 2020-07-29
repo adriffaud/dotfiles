@@ -24,6 +24,12 @@ export VISUAL="vim"
 
 alias asciidoctor='docker run --rm -it -v `pwd`:/documents/ -u 1000:1000 asciidoctor/docker-asciidoctor asciidoctor'
 
+# Changing "ls" to "exa"
+alias ls='exa -l --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
 export GOPATH=$HOME/dev/Go
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
 
