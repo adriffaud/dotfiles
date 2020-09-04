@@ -48,7 +48,7 @@ This function should only modify configuration layer settings."
      ;; Show suggestions by most commonly used
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
-                      auto-completion-enable-snippets-in-popup t
+                      ;; auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
 
      ;; https://develop.spacemacs.org/layers/+lang/clojure/README.html
@@ -118,30 +118,13 @@ This function should only modify configuration layer settings."
           org-journal-date-format "%A, %B %d %Y"
           org-journal-time-prefix "* "
           org-journal-time-format ""
-          org-journal-carryover-items "TODO=\"TODO\"|TODO=\"DOING\"TODO=\"BLOCKED\"|TODO=\"REVIEW\"")
-
-     ;; Text-based file manager with preview
-     ;; SPC a t r r
-     (ranger :variables
-             ranger-show-preview t
-             ranger-show-hidden t
-             ranger-cleanup-eagerly t
-             ranger-cleanup-on-disable t
-             ranger-ignored-extensions '("mvk" "flv" "iso" "mp4"))
-
-     ;; SPC ' runs eshell in a popup buffer
-     ;; To run terminal shell, add
-     ;; shell-default-shell 'multi-term
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-default-height 30
-            shell-default-position 'bottom)
+          org-journal-carryover-items "TODO=\"TODO\"|TODO=\"DOING\"|TODO=\"BLOCKED\"|TODO=\"REVIEW\"")
 
      ;; SPC TAB restricted to current layout buffers
      ;; Kill buffers when killing layer - SPC l x
-     (spacemacs-layouts :variables
-                        spacemacs-layouts-restrict-spc-tab t
-                        persp-autokill-buffer-on-remove 'kill-weak)
+     ;; (spacemacs-layouts :variables
+     ;;                    spacemacs-layouts-restrict-spc-tab t
+     ;;                    persp-autokill-buffer-on-remove 'kill-weak)
 
      (spacemacs-modeline :variables
                          doom-modeline-height 12
@@ -158,7 +141,7 @@ This function should only modify configuration layer settings."
      ;; Spell as you type with Flyspell package,
      ;; requires external command - ispell, hunspell, aspell
      ;; SPC S menu, SPC S s to check current word
-     spell-checking
+     ;; spell-checking
 
      (syntax-checking :variables
                       syntax-checking-use-original-bitmaps t)
@@ -302,10 +285,8 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 9)
-                                (todos . 9)
-                                (projects . 7)
-                                (bookmarks . 24))
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 5))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -386,11 +367,11 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the default layout name is displayed in the mode-line.
    ;; (default nil)
-   dotspacemacs-display-default-layout t
+   dotspacemacs-display-default-layout nil
 
    ;; If non-nil then the last auto saved layouts are resumed automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
 
    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
    ;; effect when using the "jump to layout by number" commands. (default nil)
