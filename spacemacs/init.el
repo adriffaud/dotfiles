@@ -86,7 +86,9 @@ This function should only modify configuration layer settings."
      ;; graphviz - open-source graph declaration system
      ;; Used to generated graphs of Clojure project dependencies
      ;; https://develop.spacemacs.org/layers/+lang/graphviz/README.html
-     graphviz
+     ;; graphviz
+
+     go
 
      ;; helm-follow-mode sticky - remembers use of C-c C-f
      ;; - follow mode previews when scrolling through a helm list
@@ -98,7 +100,7 @@ This function should only modify configuration layer settings."
      ;; javascript
      json
 
-     ;; lsp
+     lsp
 
      markdown
 
@@ -175,7 +177,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    exec-path-from-shell)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -306,7 +309,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-one
+   dotspacemacs-themes '(doom-palenight
                          doom-solarized-light
                          spacemacs-dark
                          spacemacs-light)
@@ -326,7 +329,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("IBM Plex Mono"
-                               :size 12.0
+                               :size 11.0
                                :weight normal
                                :width normal)
 
@@ -506,7 +509,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server t
+   dotspacemacs-enable-server nil
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -517,7 +520,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
 
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
@@ -560,6 +563,13 @@ It should only modify the values of Spacemacs settings."
    ;; If it does deactivate it here.
    ;; (default t)
    dotspacemacs-use-clean-aindent-mode t
+
+   ;; If non-nil shift your number row to match the entered keyboard layout
+   ;; (only in insert state). Currently supported keyboard layouts are:
+   ;; `qwerty-us', `qwertz-de' and `querty-ca-fr'.
+   ;; New layouts can be added in `spacemacs-editing' layer.
+   ;; (default nil)
+   dotspacemacs-swap-number-row nil
 
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
@@ -713,7 +723,7 @@ before packages are loaded."
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
   ;;
   ;; Turn on visual-line-mode for Org-mode only
-  ;; (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+  (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
   ;;
   ;; use org-re-reveal instead of org-reveal (which hasnt been updated in ages and breaks org-mode 9.2)
   ;; (use-package org-re-reveal :after org)
@@ -743,11 +753,11 @@ before packages are loaded."
   ;;
   ;; Vertically align s-expressions
   ;; https://github.com/clojure-emacs/clojure-mode#vertical-alignment
-  (setq clojure-align-forms-automatically t)
+  ;; (setq clojure-align-forms-automatically t)
   ;;
   ;; Auto-indent code automatically
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
-  (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+  ;; (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
   ;;
   ;;
   ;; Local Clojure and Java sources
@@ -756,149 +766,6 @@ before packages are loaded."
   ;; https://docs.cider.mx/cider/config/basic_config.html#_use_a_local_copy_of_the_java_source_code
   ;; (setq cider-jdk-src-paths '("~/projects/java/clojure-1.10.1-sources"
   ;;                             "~/projects/java/openjdk-11/src"))
-  ;;
-  ;;
-  ;; anakondo - static analysis using clj-kondo
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; https://github.com/didibus/anakondo
-  ;; Provides auto-completion without the need for a REPL
-  ;; Add anakondo to `dotspacemacs-additional-packages` list
-  ;;
-  ;; `SPC SPC anakondo-minor-mode' to run manually for the current project.
-  ;;
-  ;; Commented until static analysis is an optional or background process
-  ;; https://github.com/didibus/anakondo/issues/1
-  ;;
-  ;; Lazy load of anakondo until Clojure buffer is used
-  ;; (autoload 'anakondo-minor-mode "anakondo")
-  ;;
-  ;; Enable anakondo-minor-mode in all Clojure buffers
-  ;; (add-hook 'clojure-mode-hook #'anakondo-minor-mode)
-  ;; Enable anakondo-minor-mode in all ClojureScript buffers
-  ;; (add-hook 'clojurescript-mode-hook #'anakondo-minor-mode)
-  ;; Enable anakondo-minor-mode in all cljc buffers
-  ;; (add-hook 'clojurec-mode-hook #'anakondo-minor-mode)
-  ;;
-  ;;
-  ;;
-  ;; LSP server for Clojure with clj-kondo
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; An alternative approach to the Clojure layer variable clojure-enable-linters 'clj-kondo
-  ;; for those environments where the clj-kondo binary does not run (eg. graal).
-  ;; Uses a custom script to run the clj-kondo-lsp-server.jar which should be added
-  ;; to the operating system path and include:
-  ;; java -jar ~/path/to/clj-kondo-lsp-server-standalone.jar
-  ;; (use-package lsp-mode
-  ;;   :ensure t
-  ;;   :hook ((clojure-mode . lsp))
-  ;;   :commands lsp
-  ;;   :custom ((lsp-clojure-server-command '("clojure-lsp-server-clj-kondo")))
-  ;;   :config (dolist  (m '(clojure-mode clojurescript-mode))
-  ;;             (add-to-list 'lsp-language-id-configuration `(,m . "clojure"))))
-  ;;
-  ;;
-  ;; TODO: review this binding - gives poor user experience
-  ;; Multi-line editing in the REPL buffer
-  ;; `RTN` creates a new line, `C-RTN` evaluates the code
-  ;; Multi-line editing in the REPL buffer
-  ;; (add-hook 'cider-repl-mode-hook
-  ;;           '(lambda ()
-  ;;              (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
-  ;;              (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)))
-  ;;
-  ;;
-  ;; TODO: review this binding
-  ;; repl history keybindings - not used - use s-<up> and s-<down> which are the defaults
-  ;; (add-hook 'cider-repl-mode-hook
-  ;;           '(lambda ()
-  ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
-  ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
-  ;;
-  ;;
-  ;; hook for command-line-mode - shows keybindings & commands in separate buffer
-  ;; load command-line-mode when opening a clojure file
-  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
-  ;;
-  ;; turn on command-log-mode when opening a source code or text file
-  ;; (add-hook 'prog-mode-hook 'command-log-mode)
-  ;; (add-hook 'text-mode-hook 'command-log-mode)
-  ;;
-  ;; toggle reader macro sexp comment
-  ;; toggles the #_ characters at the start of an expression
-  (defun clojure-toggle-reader-comment-sexp ()
-    (interactive)
-    (let* ((point-pos1 (point)))
-      (evil-insert-line 0)
-      (let* ((point-pos2 (point))
-             (cmtstr "#_")
-             (cmtstr-len (length cmtstr))
-             (line-start (buffer-substring-no-properties point-pos2 (+ point-pos2 cmtstr-len)))
-             (point-movement (if (string= cmtstr line-start) -2 2))
-             (ending-point-pos (+ point-pos1 point-movement 1)))
-        (if (string= cmtstr line-start)
-            (delete-char cmtstr-len)
-          (insert cmtstr))
-        (goto-char ending-point-pos)))
-    (evil-normal-state))
-  ;;
-  ;; Assign keybinding to the toggle-reader-comment-sexp function
-  (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
-  ;;
-  ;; Evaluate code when it is contained in a (comment (,,,))
-  ;; 24th sept - didnt work, even after updating spacemacs and packages
-  ;; (setq cider-eval-toplevel-inside-comment-form t)
-  ;;
-  ;; (add-hook 'clojure-mode-hook
-  ;;           '(setq cider-eval-toplevel-inside-comment-form t))
-  ;;
-  ;;
-  ;; Toggle view of a clojure `(comment ,,,) block'
-  ;;
-  (defun clojure-hack/toggle-comment-block (arg)
-    "Close all top level (comment) forms. With universal arg, open all."
-    (interactive "P")
-    (save-excursion
-      (goto-char (point-min))
-      (while (search-forward-regexp "^(comment\\>" nil 'noerror)
-        (call-interactively
-         (if arg 'evil-open-fold
-           'evil-close-fold)))))
-  ;;
-  (evil-define-key 'normal clojure-mode-map
-    "zC" 'clojure-hack/toggle-comment-block
-    "zO" (lambda () (interactive) (clojure-hack/toggle-comment-block 'open)))
-  ;;
-  ;;
-  ;; Experiment: Start Clojure REPL with a specific profile
-  ;; https://stackoverflow.com/questions/18304271/how-do-i-choose-switch-leiningen-profiles-with-emacs-nrepl
-  ;;
-  ;; (defun start-cider-repl-with-profile ()
-  ;;   (interactive)
-  ;;   (letrec ((profile (read-string "Enter profile name: "))
-  ;;            (lein-params (concat "with-profile +" profile " repl :headless")))
-  ;;     (message "lein-params set to: %s" lein-params)
-  ;;     (set-variable 'cider-lein-parameters lein-params)
-  ;;     (cider-jack-in)))
-  ;;
-  ;; My altered more idiomatic version, hopefully
-  ;; - seems to be a bug...
-  ;; (defun start-cider-repl-with-profile (profile)
-  ;;   (interactive "sEnter profile name: ")
-  ;;   (letrec ((lein-params (concat "with-profile +" profile " repl :headless")))
-  ;;     (message "lein-params set to: %s" lein-params)
-  ;;     (set-variable 'cider-lein-parameters lein-params)
-  ;;     (cider-jack-in)))
-  ;;
-  ;;
-  ;; Hook for command-log-mode
-  ;; shows keybindings & commands in separate buffer
-  ;; Load command-log-mode when opening a clojure file
-  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
-  ;;
-  ;; Turn on command-log-mode when opening a source code or text file
-  ;; (add-hook 'prog-mode-hook 'command-log-mode)
-  ;; (add-hook 'text-mode-hook 'command-log-mode)
-  ;;
   ;;
   ;; end of clojure configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
