@@ -39,3 +39,4 @@
     ~/.config/ncmpcpp: config/ncmpcpp
     ~/.config/fish/fishfile: config/fish/fishfile
     ~/.spacemacs.d: spacemacs
+    ~/.doom.d: doom
