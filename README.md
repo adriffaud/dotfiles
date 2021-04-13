@@ -15,7 +15,7 @@ My dotfiles for i3, zsh, polybar, dunst...
 - Gtk theme: `Arc Dark`
 - Icons: `Arc`
 - Shell: `zsh`
-- Terminal Emulator: `kitty`
+- Terminal Emulator: `alacritty`
 - Text Editor: `vscode/vim`
 - Theme: `Palenight`
 - Web Browser: `Mozilla Firefox`

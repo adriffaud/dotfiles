@@ -176,7 +176,7 @@ smart_borders on
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps" 
+bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -231,13 +231,12 @@ for_window [class="Arandr"] floating enable
 
 # Autostart
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
+exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
 exec        --no-startup-id picom
 exec        --no-startup-id numlockx
 exec_always --no-startup-id setxkbmap -layout us,fr
 exec				--no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
-exec_always --no-startup-id "~/.config/polybar/launch.sh"
-exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
 
-exec        --no-startup-id /usr/lib/slack/slack
+#exec        --no-startup-id /usr/lib/slack/slack

@@ -74,7 +74,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=8;1"
 modules-left = i3 xwindow
 modules-center =
 ;modules-right = cpu temperature ram download pavolume keyboard
-modules-right = download cpu temperature ram pavolume arch-aur-updates date
+modules-right = download cpu temperature fan ram pavolume battery arch-aur-updates date
 
 separator = |
 spacing = 0
@@ -128,32 +128,6 @@ label-urgent-padding-right = 1
 
 ################################################################################
 
-[module/networkspeedup]
-;https://github.com/jaagr/polybar/wiki/Module:-network
-type = internal/network
-interface = enp39s0
-label-connected = "%upspeed:7%"
-format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #fefefe
-format-connected-foreground = #fefefe
-format-connected-background = #8d62a9
-
-################################################################################
-
-[module/networkspeeddown]
-;https://github.com/jaagr/polybar/wiki/Module:-network
-type = internal/network
-interface = enp39s0
-label-connected = "%downspeed:7%"
-format-connected = <label-connected>
-format-connected-prefix = "  "
-format-connected-prefix-foreground = #fefefe
-format-connected-foreground = #fefefe
-format-connected-background = #8d62ad
-
-################################################################################
-
 [module/date]
 ;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
@@ -198,9 +172,46 @@ format-foreground = ${colors.magenta}
 
 [module/download]
 type = internal/network
-interface = enp39s0
+interface = ${env:WIRELESS}
 label-connected =  %downspeed%  %upspeed%
 format-connected-foreground = ${colors.green}
+
+################################################################################
+
+[module/battery]
+;https://github.com/jaagr/polybar/wiki/Module:-battery
+
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 100
+
+poll-interval = 2
+time-format = %H:%M
+
+format-charging =  <label-charging>
+format-charging-foreground = ${colors.yellow}
+format-charging-padding = 1
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging-foreground = ${colors.yellow}
+format-discharging-padding = 1
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+
+format-full-prefix = " "
+format-full-foreground = ${colors.yellow}
+
+format-foreground = ${colors.yellow}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-foreground = ${colors.yellow}
 
 ################################################################################
 
@@ -237,7 +248,15 @@ format-foreground = ${colors.cyan}
 
 [module/temperature]
 type = internal/temperature
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input
 label= %temperature-c%
 format-prefix = " "
+format-foreground = ${colors.magenta}
+
+################################################################################
+
+[module/fan]
+type = custom/script
+exec = ~/.config/polybar/scripts/fan.sh
+format-prefix = " "
 format-foreground = ${colors.magenta}
