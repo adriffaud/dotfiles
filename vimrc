@@ -11,6 +11,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -20,18 +21,20 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'maralla/completor.vim'
 
 " Go
-Plugin 'fatih/vim-go'
-Plugin 'cespare/vim-toml'
+"Plugin 'fatih/vim-go'
+"Plugin 'cespare/vim-toml'
 
 " Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'w0rp/ale'
-Plugin 'prettier/vim-prettier'
-Plugin 'ap/vim-css-color'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx'
+"Plugin 'w0rp/ale'
+"Plugin 'prettier/vim-prettier'
+"Plugin 'ap/vim-css-color'
 
 " Clojure
 "Plugin 'tpope/vim-fireplace'
+Plugin 'guns/vim-sexp'
+Plugin 'liquidz/vim-iced'
 
 " Themes
 Plugin 'haishanh/night-owl.vim'
@@ -168,3 +171,4 @@ let g:ale_lint_on_text_changed = 0
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
+let g:iced_enable_default_key_mappings = v:true

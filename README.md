@@ -8,8 +8,6 @@ My dotfiles for i3, zsh, polybar, dunst...
 
 ![busy](./busy.png)
 
-[Wallpaper](https://whvn.cc/md27xm)
-
 ## Setup
 
 - Gtk theme: `Arc Dark`

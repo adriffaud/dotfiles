@@ -34,7 +34,7 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias cat='bat'
 
 export GOPATH=$HOME/dev/Go
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.emacs.d/bin
 
 function print_colors() {
   for i in {0..15} ; do
@@ -52,3 +52,7 @@ export SDKMAN_DIR="/home/adriffaud/.sdkman"
 # fnm
 export PATH=$HOME/.fnm:$PATH
 eval "`fnm env --multi`"
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi

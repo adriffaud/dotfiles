@@ -79,11 +79,7 @@
 	# Sort messages by urgency.
 	sort = yes
 
-	# Don't remove messages, if the user is idle (no mouse or keyboard input)
-	# for longer than idle_threshold seconds.
-	# Set to 0 to disable.
-	# Transient notifications ignore this setting.
-	idle_threshold = 120
+	layer = top
 
 	### Text ###
 

@@ -6,7 +6,7 @@ set $alt Mod1
 # APPEARANCE #
 ##############
 # Font
-font pango:"xos4 Terminus" 10
+font pango:"IBM Plex Mono" 10
 
 # Colors
 set_from_resource	$active		active
@@ -28,7 +28,7 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
-bindsym $mod+l exec betterlockscreen -l dimblur -- --timestr="%H:%M"
+bindsym $mod+l exec betterlockscreen -l dimblur
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -151,10 +151,10 @@ bindsym XF86AudioMute exec /home/adriffaud/bin/volume mute
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Media keys
-bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshot
 bindsym Print exec ~/bin/screenshot
@@ -168,7 +168,7 @@ for_window [class=".*"] border pixel 2
 
 # i3 Gaps
 gaps inner 10
-gaps outer -4
+gaps outer 5
 
 smart_gaps on
 smart_borders on
@@ -213,16 +213,6 @@ mode "$mode_gaps_outer" {
 for_window [class="firefox" window_role="Organizer"] floating enable
 for_window [class="firefox" window_role="About"] floating enable
 
-# Show Steam friends list in floating mode
-for_window [class="Steam" title="Steam - Actualités"] floating enable
-for_window [class="Steam" title="Liste d’ami·e·s"] floating enable
-for_window [class="Steam" title="Liste de contacts"] floating enable
-
-# Lutris windows
-for_window [class="Wine" title="Wine System Tray"] kill
-for_window [class="Lutris"] floating enable
-for_window [class="Wine" instance="battle.net.exe"] floating enable
-
 # Show Slack Call minipanel on all workspaces
 for_window [class="Slack" title="Slack Call Minipanel"] kill
 
@@ -238,5 +228,3 @@ exec_always --no-startup-id setxkbmap -layout us,fr
 exec				--no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 exec        --no-startup-id syndaemon -i 0.5 -t -K -R
-
-#exec        --no-startup-id /usr/lib/slack/slack
