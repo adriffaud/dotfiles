@@ -1,0 +1,45 @@
+[core]
+    pager = diff-so-fancy | less --tabs=4 -RFX
+    editor = vim
+[user]
+    name = Adrien Driffaud
+    email = adrien@driffaud.fr
+	signingkey = 470C1D7730A03E50
+[alias]
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(red)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(green)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg = !"git lg1"
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    count = "!f() { compareBranch=${1-master}; git rev-list --count HEAD ^$compareBranch; }; f"
+[color]
+	  ui = true
+[branch]
+    autosetuprebase = always
+[remote "origin"]
+    prune = true
+[push]
+    default = simple
+[color "diff-highlight"]
+	  oldNormal = red bold
+	  oldHighlight = red bold 52
+  	newNormal = green bold
+	  newHighlight = green bold 22
+[color "diff"]
+  	meta = 11
+	  frag = magenta bold
+  	commit = yellow bold
+  	old = red bold
+  	new = green bold
+  	whitespace = red reverse
+  	func = 146 bold
+[github]
+	  user = adriffaud
+[init]
+  	defaultBranch = main
+	defaultbranch = master
+[commit]
+	gpgSign = true

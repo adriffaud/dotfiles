@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# You can call this script like this:
+#  * volume up
+#  * volume down
+#  * volume mute
+
+function get_volume {
+	pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
+}
+
+function is_mute {
+	pactl list sinks | grep '^[[:space:]]Mute: ' | tail -n 1 | grep yes > /dev/null
+}
+
+function send_notification {
+	volume=`get_volume`
+	dunstify -i audio-volume-medium -t 4000 -r 2593 -u normal "$volume%"
+}
+
+case $1 in
+	up)
+		# Set the volume on (if it was muted)
+		pactl set-sink-mute @DEFAULT_SINK@ off
+		# Up the volume (+ 5%)
+		pactl set-sink-volume @DEFAULT_SINK@ +5%
+		send_notification
+	;;
+	down)
+		pactl set-sink-mute @DEFAULT_SINK@ off
+		pactl set-sink-volume @DEFAULT_SINK@ -5%
+		send_notification
+	;;
+	mute)
+		# Toggle mute
+		pactl set-sink-mute @DEFAULT_SINK@ toggle
+		if is_mute ; then
+			dunstify -i audio-volume-muted -t 4000 -r 2593 -u normal "Mute"
+		else
+			send_notification
+		fi
+	;;
+esac
+

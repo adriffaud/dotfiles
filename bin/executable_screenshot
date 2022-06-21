@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ARGS=""
+
+while getopts isc option
+do
+	case "${option}"
+		in
+		i) ARGS="-i $(xdotool getactivewindow)";;
+		s) ARGS="-s";;
+	esac
+done
+
+NAME=screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
+
+maim $ARGS ~/Pictures/$NAME
+
+notify-send "$NAME saved"

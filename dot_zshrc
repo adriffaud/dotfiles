@@ -1,0 +1,90 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+# Needed for some tools like SDKMAN
+setopt clobber
+unsetopt PATH_DIRS
+
+alias gst="git status"
+
+#export TERM="screen-256color"
+alias ssh="TERM=xterm-256color ssh"
+alias vim="nvim"
+
+# Changing "ls" to "exa"
+alias ls='exa -l --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
+export EDITOR="vim"
+export VISUAL="vim"
+export AWS_VAULT_BACKEND="pass"
+export ERL_AFLAGS="-kernel shell_history enabled"
+export GOPATH=$HOME/dev/Go
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.emacs.d/bin:$HOME/.krew/bin
+
+function print_colors() {
+  for i in {0..15} ; do
+    printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+    if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+        printf "\n";
+    fi
+  done
+}
+
+# Load private customizations
+if [ -f ~/.shell_private ]; then
+  source ~/.shell_private
+fi
+
+# SSH/GPG + Windows + Yubikey = ♥
+export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
+if ! ss -a | grep -q "$SSH_AUTH_SOCK"; then
+  rm -f "$SSH_AUTH_SOCK"
+  wsl2_ssh_pageant_bin="$HOME/.ssh/wsl2-ssh-pageant.exe"
+  if test -x "$wsl2_ssh_pageant_bin"; then
+    (setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin" >/dev/null 2>&1 &)
+  else
+    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+  fi
+  unset wsl2_ssh_pageant_bin
+fi
+
+export GPG_AGENT_SOCK="$HOME/.gnupg/S.gpg-agent"
+if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
+  rm -rf "$GPG_AGENT_SOCK"
+  wsl2_ssh_pageant_bin="$HOME/.ssh/wsl2-ssh-pageant.exe"
+	config_path="C\:/Users/Adrien/AppData/Local/gnupg"
+  if test -x "$wsl2_ssh_pageant_bin"; then
+    (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin -gpgConfigBasepath ${config_path} --gpg S.gpg-agent" >/dev/null 2>&1 &)
+  else
+    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+  fi
+  unset wsl2_ssh_pageant_bin
+fi
+
+export GPG_TTY=$(tty)
+
+source <(kubectl completion zsh)
+alias k=kubectl
+
+source <(minikube completion zsh)
+alias mk=minikube
+
+source <(helm completion zsh)
+alias h=helm
+
+complete -F __start_kubectl k
+complete -F __start_minikube mk
+complete -F __start_helm h
+
+eval "$(starship init zsh)"
+
+# ASDF
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
