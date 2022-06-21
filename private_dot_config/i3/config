@@ -1,0 +1,230 @@
+# Variables
+set $mod Mod4
+set $alt Mod1
+
+##############
+# APPEARANCE #
+##############
+# Font
+font pango:"IBM Plex Mono" 10
+
+# Colors
+set_from_resource	$active		active
+set_from_resource	$inactive	inactive
+set_from_resource	$background	background
+set_from_resource	$foreground	foreground
+set_from_resource	$urgent		urgent
+
+# class                         border          background      text            indicator		child-border
+client.focused                  #4C566A         #4c566a         #d8dee9         #c792ea			#82aaff
+client.focused_inactive         #2e3440         #2e3440         #d8dee9         #484E50
+client.unfocused                #2e3440         #2e3440         #d8dee9         #292D2E
+#client.urgent                  $urgent         $active         $foreground     #900000
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# bindsym $mod+l exec i3lock -c 000000 -i $wallpaper -t
+bindsym $mod+l exec betterlockscreen -l dimblur
+
+# kill focused window
+bindsym $mod+Shift+A kill
+bindsym $alt+F4 kill
+
+# Use Rofi as application launcher
+bindsym $mod+d exec rofi -show drun -display-run ":"
+
+# Focus window
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+q focus parent
+
+# focus the child container
+bindsym $mod+Shift+q focus child
+
+# Cycle through workspaces with Mod + PageNext/Prev
+bindsym $mod+Next workspace next
+bindsym $mod+Prior workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+F1 reload
+bindsym $mod+F2 restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+F4 exec "i3-nagbar -t warning -m 'Exit i3? This will end your X session.' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+F4 exec "i3-nagbar -t error -m 'Shutdown the computer?' -b 'Yes' 'systemctl poweroff'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym $mod+x move workspace to output right
+bindsym $mod+c move workspace to output up
+
+# move chat workspace to second screen
+# workspace 4 output
+
+# pin apps to some workspace
+assign [class="Google-chrome"] 1
+assign [class="firefox"] 1
+assign [class="Emacs"] 2
+assign [class="Slack"] 4
+assign [class="discord"] 4
+assign [class="Steam"] 6
+
+# Screen brightness
+bindsym XF86MonBrightnessUp exec /home/adriffaud/bin/brightness up
+bindsym XF86MonBrightnessDown exec /home/adriffaud/bin/brightness down
+
+# volume
+bindsym XF86AudioRaiseVolume exec /home/adriffaud/bin/volume up
+bindsym XF86AudioLowerVolume exec /home/adriffaud/bin/volume down
+bindsym XF86AudioMute exec /home/adriffaud/bin/volume mute
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Media keys
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshot
+bindsym Print exec ~/bin/screenshot
+bindsym Shift+Print exec ~/bin/screenshot -s
+bindsym Ctrl+Print exec ~/bin/screencast
+bindsym Ctrl+Shift+Print exec killall ffmpeg
+
+# Hide window border if only window
+hide_edge_borders both
+for_window [class=".*"] border pixel 2
+
+# i3 Gaps
+gaps inner 10
+gaps outer 5
+
+smart_gaps on
+smart_borders on
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Show Firefox utility windows in floating mode
+for_window [class="firefox" window_role="Organizer"] floating enable
+for_window [class="firefox" window_role="About"] floating enable
+
+# Show Slack Call minipanel on all workspaces
+for_window [class="Slack" title="Slack Call Minipanel"] kill
+
+# Make arandr window floating
+for_window [class="Arandr"] floating enable
+
+# Autostart
+exec_always --no-startup-id "~/.config/polybar/launch.sh"
+exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
+exec        --no-startup-id picom
+exec        --no-startup-id numlockx
+exec_always --no-startup-id setxkbmap -layout us,fr
+exec				--no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
+exec        --no-startup-id syndaemon -i 0.5 -t -K -R

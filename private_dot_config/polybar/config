@@ -1,0 +1,262 @@
+# vi: ft=dosini
+
+; Doc: https://github.com/jaagr/polybar
+; Wiki: https://github.com/jaagr/polybar/wiki
+; FontAwesome cheat sheet for icons: https://fontawesome.com/v4.7.0/cheatsheet/
+
+[global/wm]
+;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+throttle-output = 5
+throttle-output-for = 10
+screenchange-reload = false
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+[colors]
+;; Active Colors
+bground = #292D3E
+fground = #ffffff
+accent = #82AAFF
+modulefg = #ffffff
+
+;; Palenight Colors
+grey = #4c566a
+blue = #82AAFF
+black = #676E95
+cyan = #89DDFF
+green = #a9c77d
+magenta = #C792EA
+red = #ff5572
+yellow = #FFCB6B
+
+[bar/default]
+monitor = ${env:MONITOR:eDP-1}
+monitor-strict = false
+override-redirect = false
+bottom = false
+fixed-center = true
+width = 100%
+height = 24
+
+; offset-x = 0%
+; offset-y = 0%
+
+background = ${colors.bground}
+foreground = ${colors.fground}
+
+border-bottom-size = 1
+border-color = ${colors.accent}
+
+radius = 0.0
+
+line-size = 2
+line-color = #000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "IBM Plex Mono:size=10;1"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=8;1"
+
+modules-left = i3 xwindow
+modules-center =
+;modules-right = cpu temperature ram download pavolume keyboard
+modules-right = download cpu temperature fan ram pavolume battery arch-aur-updates date
+
+separator = |
+spacing = 0
+dim-value = 1.0
+wm-name =
+locale =
+
+enable-ipc = true
+
+################################################################################
+
+[module/arch-aur-updates]
+type = custom/script
+exec = /home/adriffaud/.config/polybar/scripts/check-all-updates.sh
+interval = 1000
+label = %output%
+format-prefix = "  "
+format-foreground = ${colors.blue}
+
+################################################################################
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = false
+strip-wsnumbers = false
+index-sort = true
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false
+reverse-scroll = true
+fuzzy-match = false
+
+format = <label-mode><label-state>
+
+label-mode = %mode%
+label-mode-foreground = ${colors.modulefg}
+label-mode-padding-right = 1
+
+label-focused-foreground = ${colors.modulefg}
+label-focused-padding-right = 1
+
+label-unfocused-padding-right = 1
+label-unfocused-foreground = ${colors.grey}
+
+label-visible-padding-right = 1
+label-visible-foreground = ${colors.grey}
+
+label-urgent-foreground = ${colors.red}
+label-urgent-padding-right = 1
+
+################################################################################
+
+[module/date]
+;https://github.com/jaagr/polybar/wiki/Module:-date
+type = internal/date
+; Seconds to sleep between updates
+interval = 5
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = " %a %b %d"
+time = %H:%M%
+format-prefix = " "
+format-foreground = ${colors.cyan}
+label = "%date% %time% "
+
+################################################################################
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = ${colors.green}
+
+################################################################################
+
+[module/xwindow]
+;https://github.com/jaagr/polybar/wiki/Module:-xwindow
+type = internal/xwindow
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 70
+
+format-foreground = ${colors.magenta}
+
+################################################################################
+
+[module/download]
+type = internal/network
+interface = ${env:WIRELESS}
+label-connected =  %downspeed%  %upspeed%
+format-connected-foreground = ${colors.green}
+
+################################################################################
+
+[module/battery]
+;https://github.com/jaagr/polybar/wiki/Module:-battery
+
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 100
+
+poll-interval = 2
+time-format = %H:%M
+
+format-charging =  <label-charging>
+format-charging-foreground = ${colors.yellow}
+format-charging-padding = 1
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging-foreground = ${colors.yellow}
+format-discharging-padding = 1
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+
+format-full-prefix = " "
+format-full-foreground = ${colors.yellow}
+
+format-foreground = ${colors.yellow}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-foreground = ${colors.yellow}
+
+################################################################################
+
+[module/cpu]
+type = internal/cpu
+label = %percentage%%
+format-prefix = " "
+format-foreground = ${colors.yellow}
+
+################################################################################
+
+[module/ram]
+type = internal/memory
+label = %percentage_used%%
+format-prefix = " "
+format-foreground = ${colors.red}
+
+
+################################################################################
+
+[module/keyboard]
+type = internal/xkeyboard
+
+label-layout = kb: %layout%
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+blacklist-2 = caps lock
+
+format-foreground = ${colors.cyan}
+
+################################################################################
+
+[module/temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+label= %temperature-c%
+format-prefix = " "
+format-foreground = ${colors.magenta}
+
+################################################################################
+
+[module/fan]
+type = custom/script
+exec = ~/.config/polybar/scripts/fan.sh
+format-prefix = " "
+format-foreground = ${colors.magenta}
