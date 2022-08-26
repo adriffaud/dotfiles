@@ -37,9 +37,11 @@ require('packer').startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
-	--use 'lifepillar/vim-solarized8' -- Solarized theme
+	use 'lifepillar/vim-solarized8' -- Solarized theme
 	use 'joshdick/onedark.vim' -- One Dark theme
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+
+	use 'nathangrigg/vim-beancount' -- Beancount filetype support
 
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
@@ -91,8 +93,8 @@ vim.opt.clipboard:prepend {"unnamedplus"}
 --Set colorscheme
 vim.o.termguicolors = true
 vim.cmd [[
-set background=dark
-colorscheme onedark
+set background=light
+colorscheme solarized8
 ]]
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
