@@ -41,8 +41,6 @@ require('packer').startup(function(use)
 	use 'joshdick/onedark.vim' -- One Dark theme
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
 
-	use 'nathangrigg/vim-beancount' -- Beancount filetype support
-
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
 
@@ -53,21 +51,14 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp'
+	use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
-	use {
-				'williamboman/nvim-lsp-installer',
-				{
-					'neovim/nvim-lspconfig',
-					config = function()
-						require("nvim-lsp-installer").setup {}
-						local lspconfig = require("lspconfig")
-						lspconfig.sumneko_lua.setup {}
-					end
-				}
-			} -- Directly install form nvim
+
 	use 'hashivim/vim-terraform' -- Terraform color
 	use 'mhanberg/elixir.nvim'
+	use 'nathangrigg/vim-beancount' -- Beancount filetype support
 end)
 ---------------------------------------------------------------------> Global config
 local opt = vim.opt
@@ -233,17 +224,19 @@ require'lspconfig'.terraformls.setup{
 }
 
 -- lsp installer
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.settings({
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
+require("mason").setup {
+  ui = {
+	   icons = {
+			 package_installed = "✓",
+			 package_pending = "➜",
+       package_uninstalled = "✗"
     }
-})
+  }
+}
+
+require("mason-lspconfig").setup {
+	ensure_installed = { "elixir-ls" }
+}
 
 -- luasnip setup
 local luasnip = require 'luasnip'
