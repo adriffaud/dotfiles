@@ -1,8 +1,8 @@
 [core]
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = bat -p
   editor = vim
-[interactive]
-	diffFilter = diff-so-fancy --patch
+[diff]
+	tool = vimdiff
 [user]
   name = Adrien Driffaud
   email = adrien@driffaud.fr
@@ -17,27 +17,15 @@
   co = checkout
   df = diff
   count = "!f() { compareBranch=${1-master}; git rev-list --count HEAD ^$compareBranch; }; f"
-[color]
-  ui = true
 [branch]
    autosetuprebase = always
+[merge]
+	style = diff3
+	tool = vimdiff
 [remote "origin"]
    prune = true
 [push]
    default = simple
-[color "diff-highlight"]
-  oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-  frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-	func = 146 bold
 [github]
   user = adriffaud
 [init]
