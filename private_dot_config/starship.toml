@@ -1,0 +1,179 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+continuation_prompt = "▶▶"
+
+# Left prompt
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$vcsh\
+$docker_context\
+$package\
+$cmake\
+$cobol\
+$container\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$jobs\
+$battery\
+$time\
+$shell\
+$character"""
+
+# Right prompt
+right_format = """
+$cmd_duration\
+$status\
+$git_state\
+$git_status\
+$git_branch\
+$kubernetes\
+"""
+
+
+# Left config
+[directory]
+truncation_symbol = "…/"
+truncate_to_repo = false
+read_only = " "
+
+[elixir]
+format = '[$symbol($version \(OTP $otp_version\) )]($style)'
+symbol = " "
+
+[golang]
+format = "[$symbol($version )]($style)"
+symbol = " "
+
+[helm]
+format = "[$symbol($version )]($style)"
+detect_folders = ["charts"]
+style = "34"
+
+[terraform]
+format = "[$symbol$version]($style) "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = " "
+
+# Right config
+
+[status]
+disabled = false
+format = "[$symbol $status]($style) "
+
+[aws]
+format = '[$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+force_display = true
+symbol = "  "
+
+[kubernetes]
+format = '[$symbol$context(\($namespace\))]($style) '
+style = "cyan"
+disabled = false
+symbol = "⚙️ "
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "105"
+symbol = "שׂ "
+
+[git_status]
+format = '([(\[$all_status\]) $ahead_behind]($style) )'
+style = 'bold blue'
+conflicted = '[=](bold red)'
+ahead = '[$count⇡](bold 198)'
+behind = '[$count⇣](bold 198)'
+diverged = '[${ahead_count}⇡${behind_count}⇣](bold 198)'
+up_to_date = '[✓](bold 34)'
+untracked = '[$count?](bold 228)'
+stashed = '[$count≡](bold cyan)'
+modified = '[$count!](bold purple)'
+staged = '[$count+](bold 34)'
+renamed = '[$count»](bold white)'
+deleted = '[$count✘](bold red)'
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+disabled = true
+symbol = " "
+
+[rust]
+format = "[$symbol($version )]($style)"
+symbol = " "
