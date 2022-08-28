@@ -48,11 +48,14 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp'
+
+	-- LSP
 	use { "williamboman/mason.nvim" }
   use { "williamboman/mason-lspconfig.nvim" }
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+	use 'jose-elias-alvarez/null-ls.nvim'
+  use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
@@ -189,6 +192,18 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
+
+-- null-ls formatting
+local null_ls = require 'null-ls'
+local formatting = null_ls.builtins.formatting
+
+local sources = {
+	formatting.mix,
+}
+
+null_ls.setup {
+	sources = sources
+}
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
