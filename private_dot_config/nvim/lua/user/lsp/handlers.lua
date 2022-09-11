@@ -61,6 +61,14 @@ M.setup = function()
   })
 end
 
+local function lsp_highlight_document(client)
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
+end
+
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
@@ -84,7 +92,15 @@ end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
+  lsp_highlight_document(client)
 
+  if client.name == "sumneko_lua" then
+    client.resolved_capabilities.document_formatting = false
+  end
+
+  if client.name == "elixirls" then
+    client.resolved_capabilities.document_formatting = false
+  end
   -- if client.name == "tsserver" then
   --   require("lsp-inlayhints").on_attach(client, bufnr)
   -- end
