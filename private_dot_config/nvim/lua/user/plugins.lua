@@ -92,6 +92,9 @@ return packer.startup(function(use)
   -- Statusline
   use "nvim-lualine/lualine.nvim"
 
+  -- File Explorer
+  use "kyazdani42/nvim-tree.lua"
+
   -- Comment
   use "numToStr/Comment.nvim"
 
