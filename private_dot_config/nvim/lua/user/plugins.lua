@@ -81,6 +81,7 @@ return packer.startup(function(use)
   -- Colorschemes
   use "lifepillar/vim-solarized8"
   use "folke/tokyonight.nvim"
+  use "ellisonleao/gruvbox.nvim"
 
   -- Utility
   use "moll/vim-bbye"
@@ -91,6 +92,9 @@ return packer.startup(function(use)
 
   -- Statusline
   use "nvim-lualine/lualine.nvim"
+
+  -- Indent
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- File Explorer
   use "kyazdani42/nvim-tree.lua"

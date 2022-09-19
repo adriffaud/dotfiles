@@ -14,6 +14,8 @@ local servers = {
 	"html",
 	"jsonls",
 	"sumneko_lua",
+  "svelte",
+  "terraformls",
 	"yamlls",
 }
 
