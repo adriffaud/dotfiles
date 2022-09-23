@@ -71,6 +71,13 @@ fi
 
 export GPG_TTY=$(tty)
 
+# ASDF
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
+
+eval "$(starship init zsh)"
+
 source <(kubectl completion zsh)
 alias k=kubectl
 
@@ -83,10 +90,3 @@ alias h=helm
 complete -F __start_kubectl k
 complete -F __start_minikube mk
 complete -F __start_helm h
-
-eval "$(starship init zsh)"
-
-# ASDF
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
