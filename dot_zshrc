@@ -43,38 +43,19 @@ if [ -f ~/.shell_private ]; then
   source ~/.shell_private
 fi
 
-# SSH/GPG + Windows + Yubikey = ♥
-export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-if ! ss -a | grep -q "$SSH_AUTH_SOCK"; then
-  rm -f "$SSH_AUTH_SOCK"
-  wsl2_ssh_pageant_bin="$HOME/.ssh/wsl2-ssh-pageant.exe"
-  if test -x "$wsl2_ssh_pageant_bin"; then
-    (setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin" >/dev/null 2>&1 &)
-  else
-    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
-  fi
-  unset wsl2_ssh_pageant_bin
+if [ -n $WSL_DISTRO_NAME ]; then
+  source ~/.wsl2_ssh_pageant
 fi
-
-export GPG_AGENT_SOCK="$HOME/.gnupg/S.gpg-agent"
-if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
-  rm -rf "$GPG_AGENT_SOCK"
-  wsl2_ssh_pageant_bin="$HOME/.ssh/wsl2-ssh-pageant.exe"
-	config_path="C\:/Users/Adrien/AppData/Local/gnupg"
-  if test -x "$wsl2_ssh_pageant_bin"; then
-    (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin -gpgConfigBasepath ${config_path} --gpg S.gpg-agent" >/dev/null 2>&1 &)
-  else
-    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
-  fi
-  unset wsl2_ssh_pageant_bin
-fi
-
-export GPG_TTY=$(tty)
 
 # ASDF
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
+
+if command -v apt &> /dev/null; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+  source /usr/share/doc/fzf/examples/completion.zsh
+fi
 
 eval "$(starship init zsh)"
 
