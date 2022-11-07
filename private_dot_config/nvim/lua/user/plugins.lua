@@ -82,7 +82,10 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use("lifepillar/vim-solarized8")
 	use("folke/tokyonight.nvim")
-	use("ellisonleao/gruvbox.nvim")
+	use({
+		"ellisonleao/gruvbox.nvim",
+		commit = "cb7a8a867cfaa7f0e8ded57eb931da88635e7007",
+	})
 
 	-- Utility
 	use("moll/vim-bbye")
