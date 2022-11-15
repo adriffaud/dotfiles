@@ -1,5 +1,5 @@
 local config = {
-  updater = { channel = "nightly" },
+  updater = { channel = "stable" },
 
   colorscheme = "gruvbox",
 
@@ -11,6 +11,9 @@ local config = {
 
   plugins = {
     init = {
+      ["akinsho/bufferline.nvim"] = { disable = true },
+      ["goolord/alpha-nvim"] = { disable = true },
+      ["stevearc/aerial.nvim"] = { disable = true },
       { "ellisonleao/gruvbox.nvim" }
     },
   },
