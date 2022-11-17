@@ -21,6 +21,39 @@ local config = {
           }
         end
       },
+      ["nvim-neorg/neorg"] = {
+        config = function()
+          require("neorg").setup {
+            load = {
+              ["core.defaults"] = {},
+              ["core.norg.concealer"] = {},
+              ["core.norg.completion"] = {
+                config = {
+                  engine = "nvim-cmp",
+                },
+              },
+              ["core.norg.dirman"] = {
+                config = {
+                  workspaces = {
+                    work = "~/notes/work",
+                    home = "~/notes/home",
+                    brain = "~/notes/brain",
+                    gtd = "~/notes/brain/gtd",
+                  },
+                },
+              },
+              ["core.gtd.base"] = {
+                config = {
+                  workspace = "gtd",
+                },
+              },
+            },
+          }
+        end,
+        requires = {
+          { "nvim-lua/plenary.nvim" },
+        },
+      },
     },
   },
 }
