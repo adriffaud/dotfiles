@@ -14,7 +14,13 @@ local config = {
       ["akinsho/bufferline.nvim"] = { disable = true },
       ["goolord/alpha-nvim"] = { disable = true },
       ["stevearc/aerial.nvim"] = { disable = true },
-      { "ellisonleao/gruvbox.nvim" }
+      ["ellisonleao/gruvbox.nvim"] = {
+        config = function()
+          require("gruvbox").setup {
+            italic = false
+          }
+        end
+      },
     },
   },
 }
