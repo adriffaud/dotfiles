@@ -9,10 +9,31 @@ local config = {
     }
   },
 
+  lsp = {
+    on_attach = function(_, bufnr)
+      local diagnostics_active = true
+      vim.keymap.set("n", "<leader>lt", function()
+        diagnostics_active = not diagnostics_active
+        if diagnostics_active then
+          vim.diagnostic.show()
+        else
+          vim.diagnostic.hide()
+        end
+      end, { buffer = bufnr, desc = "Toggle diagnostics" })
+    end,
+    yamlls = {
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}"
+          }
+        }
+      }
+    }
+  },
+
   plugins = {
     init = {
-      ["akinsho/bufferline.nvim"] = { disable = true },
-      ["stevearc/aerial.nvim"] = { disable = true },
       ["ellisonleao/gruvbox.nvim"] = {
         config = function()
           require("gruvbox").setup {
