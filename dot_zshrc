@@ -22,6 +22,8 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
 alias cat='bat'
 
+unalias gdu
+
 export EDITOR="vim"
 export VISUAL="vim"
 export AWS_VAULT_BACKEND="pass"
@@ -67,6 +69,8 @@ alias mk=minikube
 
 source <(helm completion zsh)
 alias h=helm
+
+alias tf=terraform
 
 complete -F __start_kubectl k
 complete -F __start_minikube mk
