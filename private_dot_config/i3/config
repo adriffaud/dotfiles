@@ -145,9 +145,9 @@ bindsym XF86MonBrightnessUp exec /home/adriffaud/bin/brightness up
 bindsym XF86MonBrightnessDown exec /home/adriffaud/bin/brightness down
 
 # volume
-bindsym XF86AudioRaiseVolume exec /home/adriffaud/bin/volume up
-bindsym XF86AudioLowerVolume exec /home/adriffaud/bin/volume down
-bindsym XF86AudioMute exec /home/adriffaud/bin/volume mute
+bindsym XF86AudioRaiseVolume exec i3-volume -n -p up 5
+bindsym XF86AudioLowerVolume exec i3-volume -n -p down 5
+bindsym XF86AudioMute exec i3-volume -n -p mute
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Media keys
@@ -221,10 +221,10 @@ for_window [class="Arandr"] floating enable
 
 # Autostart
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
-exec_always --no-startup-id autorandr --change && /home/adriffaud/.fehbg
+exec_always --no-startup-id /home/adrien/.fehbg
 exec        --no-startup-id picom
 exec        --no-startup-id numlockx
 exec_always --no-startup-id setxkbmap -layout us,fr
-exec				--no-startup-id /usr/lib/xfce-polkit/xfce-polkit
-exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
-exec        --no-startup-id syndaemon -i 0.5 -t -K -R
+exec        --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+# exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
+# exec        --no-startup-id syndaemon -i 0.5 -t -K -R
