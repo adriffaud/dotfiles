@@ -8,6 +8,8 @@ fi
 setopt clobber
 unsetopt PATH_DIRS
 
+distribution=$(grep -w ID /etc/os-release | cut -d= -f2)
+
 alias gst="git status"
 
 #export TERM="screen-256color"
@@ -45,12 +47,24 @@ if [ -f ~/.shell_private ]; then
   source ~/.shell_private
 fi
 
-if [ -n $WSL_DISTRO_NAME ]; then
+if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
   source ~/.wsl2_ssh_pageant
 fi
 
-# ASDF
+if [ "$distribution" = "arch" ]; then
+  export GPG_TTY="$(tty)"
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  gpgconf --launch gpg-agent
+
+  . /opt/asdf-vm/asdf.sh
+
+  if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec startx
+  fi
+else
 . $HOME/.asdf/asdf.sh
+fi
+
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
