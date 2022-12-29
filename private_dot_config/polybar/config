@@ -38,7 +38,7 @@ red = #ff5572
 yellow = #FFCB6B
 
 [bar/default]
-monitor = ${env:MONITOR:eDP-1}
+# monitor = ${env:MONITOR:DP-4}
 monitor-strict = false
 override-redirect = false
 bottom = false
@@ -67,14 +67,14 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = "IBM Plex Mono:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-3 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-1 = "Font Awesome 6 Free:style=Regular:pixelsize=8;1"
+font-2 = "Font Awesome 6 Free:style=Solid:pixelsize=8;1"
+font-3 = "Font Awesome 6 Brands:pixelsize=8;1"
 
 modules-left = i3 xwindow
 modules-center =
 ;modules-right = cpu temperature ram download pavolume keyboard
-modules-right = download cpu temperature fan ram pavolume battery arch-aur-updates date
+modules-right = download cpu temperature ram arch-aur-updates pavolume date
 
 separator = |
 spacing = 0
@@ -88,7 +88,7 @@ enable-ipc = true
 
 [module/arch-aur-updates]
 type = custom/script
-exec = /home/adriffaud/.config/polybar/scripts/check-all-updates.sh
+exec = /home/adrien/.config/polybar/scripts/check-all-updates.sh
 interval = 1000
 label = %output%
 format-prefix = "  "
@@ -147,11 +147,11 @@ label = "%date% %time% "
 type = custom/script
 tail = true
 label = %output%
-exec = ~/.config/polybar/scripts/pavolume.sh --listen
+exec = i3-volume output default
 click-right = exec pavucontrol
-click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
-scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
-scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+click-left = i3-volume mute
+scroll-up = i3-volume up 5
+scroll-down = i3-volume down 5
 format-foreground = ${colors.green}
 
 ################################################################################
