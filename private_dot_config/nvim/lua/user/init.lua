@@ -1,7 +1,7 @@
 local config = {
   updater = { channel = "stable" },
 
-  colorscheme = "tokyonight-storm",
+  colorscheme = "catppuccin-frappe",
 
   highlights = {},
 
@@ -28,7 +28,7 @@ local config = {
       ["akinsho/bufferline.nvim"] = { disable = true },
       ["stevearc/aerial.nvim"] = { disable = true },
       { "folke/tokyonight.nvim" },
-      { "p00f/alabaster.nvim" }
+      { "catppuccin/nvim" }
     },
   },
 }
