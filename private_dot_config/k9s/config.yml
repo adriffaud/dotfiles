@@ -1,0 +1,91 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: false
+  noExitOnCtrlC: false
+  noIcons: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 60
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: minikube
+  currentCluster: minikube
+  clusters:
+    dev-telco-1:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - data-slice-oem-1-par-1
+        - core-network-operator
+        - all
+        - default
+      view:
+        active: dp
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    it-it-1:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - github
+        - all
+        - default
+      view:
+        active: dp
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    minikube:
+      namespace:
+        active: default
+        lockFavorites: false
+        favorites:
+        - all
+        - default
+      view:
+        active: dp
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: /tmp/k9s-screens-adrien
