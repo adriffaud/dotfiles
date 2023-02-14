@@ -51,19 +51,13 @@ if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
   source ~/.wsl2_ssh_pageant
 fi
 
-if [ "$distribution" = "arch" ]; then
+if [ "$distribution" = "linuxmint" ]; then
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
-
-  . /opt/asdf-vm/asdf.sh
-
-  if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    exec startx
-  fi
-else
-. $HOME/.asdf/asdf.sh
 fi
+
+. $HOME/.asdf/asdf.sh
 
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
@@ -83,6 +77,9 @@ alias mk=minikube
 
 source <(helm completion zsh)
 alias h=helm
+
+source <(k3d completion zsh)
+source <(chezmoi completion zsh)
 
 alias tf=terraform
 
