@@ -1,6 +1,6 @@
 # dotfiles
 
-My dotfiles for i3, zsh, polybar, dunst...
+My dotfiles for zsh, nvim, dev-tools...
 
 ## Setup
 
