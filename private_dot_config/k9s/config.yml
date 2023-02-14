@@ -8,6 +8,7 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   noIcons: false
+  skipLatestRevCheck: false
   logger:
     tail: 100
     buffer: 5000
@@ -15,20 +16,22 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: minikube
-  currentCluster: minikube
+  currentContext: k3d-airnity
+  currentCluster: k3d-airnity
   clusters:
     dev-telco-1:
       namespace:
-        active: all
+        active: sig-slice-oem-1-par-1
         lockFavorites: false
         favorites:
-        - data-slice-oem-1-par-1
         - core-network-operator
+        - sig-slice-oem-1-par-1
+        - poi-femto-cell
+        - data-slice-oem-1-par-1
         - all
         - default
       view:
-        active: dp
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:
@@ -39,17 +42,38 @@ k9s:
         limits:
           cpu: 100m
           memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
     it-it-1:
       namespace:
+        active: livebook
+        lockFavorites: false
+        favorites:
+        - livebook
+        - all
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    k3d-airnity:
+      namespace:
         active: all
         lockFavorites: false
         favorites:
-        - github
-        - all
         - default
       view:
-        active: dp
+        active: cm
       featureGates:
         nodeShell: false
       shellPod:
@@ -60,26 +84,7 @@ k9s:
         limits:
           cpu: 100m
           memory: 100Mi
-      portForwardAddress: localhost
-    minikube:
-      namespace:
-        active: default
-        lockFavorites: false
-        favorites:
-        - all
-        - default
-      view:
-        active: dp
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.35.0
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
   thresholds:
     cpu:
