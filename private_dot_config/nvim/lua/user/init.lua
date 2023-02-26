@@ -20,9 +20,6 @@ local config = {
     },
     plugins = {
         init = {
-            ["akinsho/bufferline.nvim"] = { disable = true },
-            ["stevearc/aerial.nvim"] = { disable = true },
-            { "folke/tokyonight.nvim" },
             { "catppuccin/nvim" },
             { "cuducos/yaml.nvim" }
         },
