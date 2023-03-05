@@ -31,7 +31,7 @@ export VISUAL="vim"
 export AWS_VAULT_BACKEND="pass"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export GOPATH=$HOME/dev/Go
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.emacs.d/bin:$HOME/.krew/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.config/emacs/bin:$HOME/.krew/bin
 
 function print_colors() {
   for i in {0..15} ; do
@@ -55,11 +55,32 @@ if [ "$distribution" = "linuxmint" ]; then
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
+  alias cat="batcat"
+  alias bat="cat"
+
+  . $HOME/.asdf/asdf.sh
+  fpath=(${ASDF_DIR}/completions $fpath)
+
+  source <(kubectl completion zsh)
+  alias k=kubectl
+
+  source <(minikube completion zsh)
+  alias mk=minikube
+
+  source <(helm completion zsh)
+  alias h=helm
+
+  source <(k3d completion zsh)
+  source <(chezmoi completion zsh)
+
+  alias tf=terraform
+
+  complete -F __start_kubectl k
+  complete -F __start_minikube mk
+  complete -F __start_helm h
 fi
 
-. $HOME/.asdf/asdf.sh
 
-fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 if command -v apt &> /dev/null; then
@@ -69,21 +90,3 @@ if command -v apt &> /dev/null; then
 fi
 
 eval "$(starship init zsh)"
-
-source <(kubectl completion zsh)
-alias k=kubectl
-
-source <(minikube completion zsh)
-alias mk=minikube
-
-source <(helm completion zsh)
-alias h=helm
-
-source <(k3d completion zsh)
-source <(chezmoi completion zsh)
-
-alias tf=terraform
-
-complete -F __start_kubectl k
-complete -F __start_minikube mk
-complete -F __start_helm h
