@@ -22,8 +22,6 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
-alias cat='bat'
-
 unalias gdu
 
 export EDITOR="vim"
@@ -56,7 +54,6 @@ if [ "$distribution" = "linuxmint" ]; then
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
   alias cat="batcat"
-  alias bat="cat"
 
   . $HOME/.asdf/asdf.sh
   fpath=(${ASDF_DIR}/completions $fpath)
