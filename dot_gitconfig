@@ -1,12 +1,12 @@
 [core]
-	pager = bat -p
+	pager = batcat -p
   editor = vim
 [diff]
 	tool = vimdiff
 [pager]
-  log = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | bat -p
-  show = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | bat -p
-  diff = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | bat -p
+  log = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | batcat -p
+  show = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | batcat -p
+  diff = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | batcat -p
 [user]
   name = Adrien Driffaud
   email = adrien@driffaud.fr
