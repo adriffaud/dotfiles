@@ -31,15 +31,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export GOPATH=$HOME/dev/Go
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.config/emacs/bin:$HOME/.krew/bin
 
-function print_colors() {
-  for i in {0..15} ; do
-    printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-    if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-        printf "\n";
-    fi
-  done
-}
-
 # Load private customizations
 if [ -f ~/.shell_private ]; then
   source ~/.shell_private
@@ -79,6 +70,12 @@ fi
 
 
 autoload -Uz compinit && compinit
+
+bindkey -s '^F' "tmux-sessionizer\n"
+
+validateYaml() {
+  python3 -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
 
 if command -v apt &> /dev/null; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
