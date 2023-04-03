@@ -36,3 +36,6 @@
 	defaultbranch = master
 [commit]
 	gpgSign = true
+
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
