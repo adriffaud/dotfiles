@@ -28,7 +28,7 @@ export EDITOR="vim"
 export VISUAL="vim"
 export AWS_VAULT_BACKEND="pass"
 export ERL_AFLAGS="-kernel shell_history enabled"
-export GOPATH=$HOME/dev/Go
+export GOPATH=$HOME/personal/Go
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.config/emacs/bin:$HOME/.krew/bin
 
 # Load private customizations
