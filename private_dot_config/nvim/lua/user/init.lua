@@ -1,12 +1,14 @@
 local config = {
   updater = { channel = "stable" },
-  colorscheme = "catppuccin-frappe",
+  colorscheme = "rose-pine",
+
   lsp = {
     formatting = {
       format_on_save = {
         enabled = true
       }
     },
+
     -- add to the global LSP on_attach function
     on_attach = function(client, _)
       if client.name == "yamlls" then
@@ -14,6 +16,7 @@ local config = {
         vim.diagnostic.disable(nil, ns)
       end
     end,
+
     config = {
       yamlls = {
         settings = {
