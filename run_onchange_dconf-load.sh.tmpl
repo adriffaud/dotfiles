@@ -1,4 +1,4 @@
 #! /bin/env bash
 
 # dconf-gnome-terminal.ini hash: {{ include "dconf-gnome-terminal.ini" | sha256sum }}
-dconf load / < {{ joinPath .chezmoi.sourceDir "dconf-gnome-terminal.ini" | quote }}
+dconf load /org/gnome/terminal/legacy/profiles:/ < {{ joinPath .chezmoi.sourceDir "dconf-gnome-terminal.ini" | quote }}
