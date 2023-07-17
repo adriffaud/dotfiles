@@ -1,18 +1,24 @@
 [core]
-	pager = batcat -p
+{{- if eq .chezmoi.osRelease.id "linuxmint" }}
+  pager = batcat -p
+{{- else if eq .chezmoi.osRelease.id "fedora" }}
+  pager = bat -p
+{{- end }}
   editor = vim
 [diff]
-	tool = vimdiff
+  tool = vimdiff
+{{- if eq .chezmoi.osRelease.id "linuxmint" }}
 [pager]
   log = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | batcat -p
   show = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | batcat -p
   diff = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | batcat -p
+{{- end }}
 [user]
   name = Adrien Driffaud
   email = adrien@driffaud.fr
-	signingkey = 470C1D7730A03E50
+  signingkey = 470C1D7730A03E50
 [alias]
-	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(red)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(green)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(red)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(green)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
   lg = !"git lg1"
   st = status
@@ -24,18 +30,16 @@
 [branch]
    autosetuprebase = always
 [merge]
-	style = diff3
-	tool = vimdiff
+  style = diff3
+  tool = vimdiff
 [remote "origin"]
-   prune = true
+  prune = true
 [push]
-   default = simple
+  default = simple
 [github]
   user = adriffaud
-[init]
-	defaultbranch = master
 [commit]
-	gpgSign = true
+  gpgSign = true
 
 [includeIf "gitdir:~/work/"]
   path = ~/work/.gitconfig
