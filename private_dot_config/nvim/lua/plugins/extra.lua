@@ -12,4 +12,14 @@ return {
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
     end,
   },
+
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = { "towolf/vim-helm" },
+    opts = {
+      servers = {
+        helm_ls = {},
+      },
+    },
+  },
 }
