@@ -38,20 +38,16 @@ if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
   source ~/.wsl2_ssh_pageant
 fi
 
-{{- if eq .chezmoi.osRelease.id "linuxmint" }}
+
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
-alias cat="batcat"
 
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 
 source <(kubectl completion zsh)
 alias k=kubectl
-
-source <(minikube completion zsh)
-alias mk=minikube
 
 source <(helm completion zsh)
 alias h=helm
@@ -61,16 +57,21 @@ source <(chezmoi completion zsh)
 
 alias tf=terraform
 
+autoload -Uz compinit && compinit
+
 complete -F __start_kubectl k
 complete -F __start_minikube mk
 complete -F __start_helm h
 
+{{- if eq .chezmoi.osRelease.id "linuxmint" }}
+alias cat="batcat"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
-export FZF_ALT_C_COMMAND='fdfind -t d'
 {{- end }}
-
-autoload -Uz compinit && compinit
+{{- if eq .chezmoi.osRelease.id "fedora" }}
+source /usr/share/fzf/shell/key-bindings.zsh
+{{- end }}
+export FZF_ALT_C_COMMAND='fdfind -t d'
 
 bindkey -s '^F' "tmux-sessionizer\n"
 
