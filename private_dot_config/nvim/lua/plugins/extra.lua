@@ -2,6 +2,7 @@ return {
   -- Disable default plugins
   { "folke/noice.nvim", enabled = false },
   { "SmiteshP/nvim-navic", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
 
   {
     "hrsh7th/nvim-cmp",
