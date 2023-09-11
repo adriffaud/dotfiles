@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 6
-    y: 6
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -560,38 +560,77 @@ font:
   #print_events: false
   #
 
-colors:
-  cursor:
-    text: '#292d3e'
-    cursor: '#7e57c2'
+# Palenight theme
+# colors:
+#   cursor:
+#     text: '#292d3e'
+#     cursor: '#7e57c2'
+#
+#   # Default colors
+#   primary:
+#     background: '#292D3E'
+#     foreground: '#ffffff'
+#
+#   # Normal colors
+#   normal:
+#     black: '#676E95'
+#     red: '#FF5572'
+#     green: '#a9c77d'
+#     yellow: '#ffcb6b'
+#     blue: '#82aaff'
+#     magenta: '#c792ea'
+#     cyan: '#89ddff'
+#     white: '#ffffff'
+#
+#   # Bright colors
+#   bright:
+#     black: '#676E95'
+#     red: '#FF5572'
+#     green: '#c3e88d'
+#     yellow: '#ffcb6b'
+#     blue: '#82aaff'
+#     magenta: '#c792ea'
+#     cyan: '#89ddff'
+#     white: '#ffffff'
+#
+#   selection:
+#     text: '#D8DEE9'
+#     background: '#3b4252'
+# colors:
+#   cursor:
+#     text: '#292d3e'
+#     cursor: '#7e57c2'
+#
+#   # Default colors
+#   primary:
+#     background: '#292D3E'
+#     foreground: '#ffffff'
+#
+#   # Normal colors
+#   normal:
+#     black: '#676E95'
+#     red: '#FF5572'
+#     green: '#a9c77d'
+#     yellow: '#ffcb6b'
+#     blue: '#82aaff'
+#     magenta: '#c792ea'
+#     cyan: '#89ddff'
+#     white: '#ffffff'
+#
+#   # Bright colors
+#   bright:
+#     black: '#676E95'
+#     red: '#FF5572'
+#     green: '#c3e88d'
+#     yellow: '#ffcb6b'
+#     blue: '#82aaff'
+#     magenta: '#c792ea'
+#     cyan: '#89ddff'
+#     white: '#ffffff'
+#
+#   selection:
+#     text: '#D8DEE9'
+#     background: '#3b4252'
 
-  # Default colors
-  primary:
-    background: '#292D3E'
-    foreground: '#ffffff'
-
-  # Normal colors
-  normal:
-    black: '#676E95'
-    red: '#FF5572'
-    green: '#a9c77d'
-    yellow: '#ffcb6b'
-    blue: '#82aaff'
-    magenta: '#c792ea'
-    cyan: '#89ddff'
-    white: '#ffffff'
-
-  # Bright colors
-  bright:
-    black: '#676E95'
-    red: '#FF5572'
-    green: '#c3e88d'
-    yellow: '#ffcb6b'
-    blue: '#82aaff'
-    magenta: '#c792ea'
-    cyan: '#89ddff'
-    white: '#ffffff'
-
-  selection:
-    text: '#D8DEE9'
-    background: '#3b4252'
+import:
+  - rose-pine.yaml
