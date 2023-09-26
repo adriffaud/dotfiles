@@ -2,7 +2,9 @@ return {
   -- Disable default plugins
   { "folke/noice.nvim", enabled = false },
   { "SmiteshP/nvim-navic", enabled = false },
+  { "goolord/alpha-nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = false },
 
   {
     "hrsh7th/nvim-cmp",
