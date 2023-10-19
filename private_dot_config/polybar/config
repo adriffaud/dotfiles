@@ -71,7 +71,7 @@ font-0 = "JetBrains Mono NF:size=10;1"
 modules-left = i3 xwindow
 modules-center =
 ;modules-right = cpu temperature ram download pavolume keyboard
-modules-right = download cpu temperature ram pulseaudio date
+modules-right = download cpu temperature ram pavolume date
 
 separator = |
 spacing = 0
@@ -154,11 +154,11 @@ ramp-volume-2 = 🔊
 type = custom/script
 tail = true
 label = %output%
-exec = i3-volume output default
+exec = /home/adrien/.local/bin/i3-volume output default
 click-right = exec pavucontrol
-click-left = i3-volume mute
-scroll-up = i3-volume up 5
-scroll-down = i3-volume down 5
+click-left = /home/adrien/.local/bin/i3-volume mute
+scroll-up = /home/adrien/.local/bin/i3-volume up 5
+scroll-down = /home/adrien/.local/bin/i3-volume down 5
 format-foreground = ${colors.green}
 
 ################################################################################

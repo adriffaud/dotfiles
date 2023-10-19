@@ -1,6 +1,7 @@
 # Variables
 set $mod Mod4
 set $alt Mod1
+set $volumepath /home/adrien/.local/bin
 
 ##############
 # APPEARANCE #
@@ -154,10 +155,9 @@ bindsym XF86MonBrightnessUp exec /home/adriffaud/bin/brightness up
 bindsym XF86MonBrightnessDown exec /home/adriffaud/bin/brightness down
 
 # volume
-bindsym XF86AudioRaiseVolume exec i3-volume -n -p up 5
-bindsym XF86AudioLowerVolume exec i3-volume -n -p down 5
-bindsym XF86AudioMute exec i3-volume -n -p mute
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/i3-volume -n -p up 5
+bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/i3-volume -n -p down 5
+bindsym XF86AudioMute exec --no-startup-id $volumepath/i3-volume -n -p mute
 
 # Media keys
 bindsym XF86AudioPlay exec playerctl play-pause
