@@ -22,20 +22,20 @@ compositing-border = over
 
 [colors]
 ;; Active Colors
-bground = #292D3E
-fground = #ffffff
-accent = #82AAFF
-modulefg = #ffffff
+bground = #191724
+fground = #e0def4
+accent = #ebbcba
+modulefg = #e0def4
 
 ;; Palenight Colors
 grey = #4c566a
-blue = #82AAFF
-black = #676E95
-cyan = #89DDFF
-green = #a9c77d
-magenta = #C792EA
-red = #ff5572
-yellow = #FFCB6B
+blue = #9ccfd8
+black = #26233a
+cyan = #ebbcba
+green = #31748f
+magenta = #c4a7e7
+red = #eb6f92
+yellow = #f6c177
 
 [bar/default]
 # monitor = ${env:MONITOR:DP-4}
@@ -44,7 +44,7 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 24
+height = 28
 
 ; offset-x = 0%
 ; offset-y = 0%
@@ -66,15 +66,12 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "IBM Plex Mono:size=10;1"
-font-1 = "Font Awesome 6 Free:style=Regular:pixelsize=8;1"
-font-2 = "Font Awesome 6 Free:style=Solid:pixelsize=8;1"
-font-3 = "Font Awesome 6 Brands:pixelsize=8;1"
+font-0 = "JetBrains Mono NF:size=10;1"
 
 modules-left = i3 xwindow
 modules-center =
 ;modules-right = cpu temperature ram download pavolume keyboard
-modules-right = download cpu temperature ram arch-aur-updates pavolume date
+modules-right = download cpu temperature ram pulseaudio date
 
 separator = |
 spacing = 0
@@ -83,16 +80,6 @@ wm-name =
 locale =
 
 enable-ipc = true
-
-################################################################################
-
-[module/arch-aur-updates]
-type = custom/script
-exec = /home/adrien/.config/polybar/scripts/check-all-updates.sh
-interval = 1000
-label = %output%
-format-prefix = "  "
-format-foreground = ${colors.blue}
 
 ################################################################################
 
@@ -139,7 +126,27 @@ date = " %a %b %d"
 time = %H:%M%
 format-prefix = " "
 format-foreground = ${colors.cyan}
-label = "%date% %time% "
+label = "%date%, %time% "
+
+################################################################################
+
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = false
+label = %output%
+click-right = pavucontrol
+format-volume = <ramp-volume> <label-volume>
+format-foreground = ${colors.green}
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
 
 ################################################################################
 
@@ -226,7 +233,7 @@ format-foreground = ${colors.yellow}
 [module/ram]
 type = internal/memory
 label = %percentage_used%%
-format-prefix = " "
+format-prefix = "󰍛 "
 format-foreground = ${colors.red}
 
 

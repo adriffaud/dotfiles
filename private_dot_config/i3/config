@@ -16,7 +16,7 @@ set_from_resource	$foreground	foreground
 set_from_resource	$urgent		urgent
 
 # class                         border          background      text            indicator		child-border
-client.focused                  #4C566A         #4c566a         #d8dee9         #c792ea			#82aaff
+client.focused                  #4C566A         #4c566a         #d8dee9         #9ccfd8			#ebbcba
 client.focused_inactive         #2e3440         #2e3440         #d8dee9         #484E50
 client.unfocused                #2e3440         #2e3440         #d8dee9         #292D2E
 #client.urgent                  $urgent         $active         $foreground     #900000
@@ -35,7 +35,7 @@ bindsym $mod+Shift+A kill
 bindsym $alt+F4 kill
 
 # Use Rofi as application launcher
-bindsym $mod+d exec rofi -show drun -display-run ":"
+bindsym $mod+d exec /home/adrien/.config/rofi/launchers/type-1/launcher.sh
 
 # Focus window
 bindsym $mod+Left focus left
@@ -133,12 +133,21 @@ bindsym $mod+c move workspace to output up
 # workspace 4 output
 
 # pin apps to some workspace
-assign [class="Google-chrome"] 1
 assign [class="firefox"] 1
-assign [class="Emacs"] 2
 assign [class="Slack"] 4
-assign [class="discord"] 4
-assign [class="Steam"] 6
+assign [class="^steamwebhelper$"] 6
+
+# https://github.com/ValveSoftware/steam-for-linux/issues/1040
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec /home/adriffaud/bin/brightness up
@@ -170,7 +179,7 @@ for_window [class=".*"] border pixel 2
 gaps inner 10
 gaps outer 5
 
-smart_gaps on
+smart_gaps off
 smart_borders on
 
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -223,8 +232,8 @@ for_window [class="Arandr"] floating enable
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 exec_always --no-startup-id /home/adrien/.fehbg
 exec        --no-startup-id picom
-exec        --no-startup-id numlockx
-exec_always --no-startup-id setxkbmap -layout us,fr
-exec        --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+exec_always --no-startup-id setxkbmap -layout us -variant intl
+exec        --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec        --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 # exec        --no-startup-id synclient TapButton1=1 TapButton2=3 VertScrollDelta=-70 HorizTwoFingerScroll=1 PalmDetect=1
 # exec        --no-startup-id syndaemon -i 0.5 -t -K -R
