@@ -166,10 +166,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshot
-bindsym Print exec ~/bin/screenshot
-bindsym Shift+Print exec ~/bin/screenshot -s
-bindsym Ctrl+Print exec ~/bin/screencast
-bindsym Ctrl+Shift+Print exec killall ffmpeg
+bindsym Print exec --no-startup-id maim --format=png "/home/adrien/Images/$(date +'%Y%m%d-%H%M%S').png"
+bindsym $mod+Print exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) "/home/adrien/Images/screenshot-$(date +'%Y%m%d-%H%M%SZ')-current.png"
+bindsym Shift+Print exec --no-startup-id maim --format=png --select "/home/adrien/Images/screenshot-$(date +'%Y%m%d-%H%M%SZ')-selected.png"
 
 # Hide window border if only window
 hide_edge_borders both
