@@ -1,9 +1,4 @@
 return {
-  -- Disable default plugins
-  { "folke/noice.nvim", enabled = false },
-  { "SmiteshP/nvim-navic", enabled = false },
-  { "folke/tokyonight.nvim", enabled = false },
-
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
@@ -25,10 +20,11 @@ return {
     opts = { ensure_installed = { "templ" } },
   },
 
+  { "nvim-treesitter/nvim-treesitter-context", opts = { max_lines = 10 } },
+
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
-    ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
@@ -41,6 +37,11 @@ return {
     opts = {
       servers = {
         helm_ls = {},
+        tailwindcss = {
+          -- include any other filetypes where you need tailwindcss
+          filetypes = { "templ" },
+          init_options = { userLanguages = { templ = "html" } },
+        },
       },
     },
   },
