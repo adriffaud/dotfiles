@@ -15,10 +15,10 @@ alias ssh="TERM=xterm-256color ssh"
 alias vim="nvim"
 
 # Changing "ls" to "exa"
-alias ls='exa -l --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias ls='exa -l --color=always --group-directories-first'
+alias la='exa -a --color=always --group-directories-first'
+alias ll='exa -l --color=always --group-directories-first'
+alias lt='exa -aT --color=always --group-directories-first'
 
 unalias gdu
 
@@ -27,7 +27,7 @@ export VISUAL="vim"
 export AWS_VAULT_BACKEND="pass"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export GOPATH=$HOME/personal/Go
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.config/emacs/bin:$HOME/.krew/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.cargo/bin
 
 # Load private customizations
 if [ -f ~/.shell_private ]; then
@@ -38,43 +38,12 @@ if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
   source ~/.wsl2_ssh_pageant
 fi
 
-
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-
-source <(kubectl completion zsh)
-alias k=kubectl
-
-source <(helm completion zsh)
-alias h=helm
-
-source <(k3d completion zsh)
-source <(chezmoi completion zsh)
-
-alias tf=terraform
-
-autoload -Uz bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-
-complete -F __start_kubectl k
-complete -F __start_minikube mk
-complete -F __start_helm h
-
-{{- if eq .chezmoi.osRelease.id "linuxmint" }}
-alias cat="batcat"
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
-export FZF_ALT_C_COMMAND='fdfind -t d'
-{{- end }}
-{{- if eq .chezmoi.osRelease.id "fedora" }}
-source /usr/share/fzf/shell/key-bindings.zsh
-export FZF_ALT_C_COMMAND='fd -t d'
-{{- end }}
-
 bindkey -s '^F' "tmux-sessionizer\n"
 
 eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
