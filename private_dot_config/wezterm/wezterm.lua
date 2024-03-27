@@ -37,7 +37,8 @@ wezterm.on("gui-attached", function(_)
 	end
 end)
 
-config.color_scheme = scheme_for_appearance(get_appearance())
+-- config.color_scheme = scheme_for_appearance(get_appearance())
+config.color_scheme = "tokyonight-storm"
 config.enable_wayland = false
 config.font_size = 11.0
 config.hide_tab_bar_if_only_one_tab = true
